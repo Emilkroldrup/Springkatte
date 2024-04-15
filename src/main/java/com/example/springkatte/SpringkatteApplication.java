@@ -8,7 +8,7 @@ public class SpringkatteApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SpringkatteApplication.class, args);
-        System.out.println("Test for Mads");
+      
     }
 
 }
