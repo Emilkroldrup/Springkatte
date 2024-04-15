@@ -15,7 +15,7 @@ public class SpringkatteApplication {
         UserDAO userdao = new UserDAO();
         System.out.println("hej");
 
-        userdao.adduser(user);
+        userdao.removeuser(1);
 
     }
 

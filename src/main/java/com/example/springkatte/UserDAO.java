@@ -26,4 +26,17 @@ public class UserDAO {
         }
             return  user;
     }
+
+    public User removeuser(int id){
+        User user = new User();
+        String sql = "Delete FROM user WHERE id = ?";
+        try(Connection conn = DatabaseConnection.getConnection();
+       PreparedStatement pstmt = conn.prepareStatement(sql) ) {
+            pstmt.setInt(1,id);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return  user;
+    }
 }
