@@ -6,23 +6,33 @@ import com.example.springkatte.Model.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDAO {
 
     public User adduser(User user){
-
-            String sql = "INSERT INTO user (name,email,password) VALUES (?,?,?)";
+        String sql = "INSERT INTO user (name,email,password,role) VALUES (?,?,?,?)";
         try(Connection conn = DatabaseConnection.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql))
         {
             pstmt.setString(1,user.getName());
             pstmt.setString(2,user.getEmail());
             pstmt.setString(3,user.getPassword());
+            if ("1".equals(user.getRole())) {
+                pstmt.setString(4, "User");
+            } else if ("2".equals(user.getRole())) {
+                pstmt.setString(4, "Admin");
+            } else {
+                pstmt.setString(4, "User");
+            }
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
             return  user;
     }
 
@@ -37,5 +47,28 @@ public class UserDAO {
             throw new RuntimeException(e);
         }
         return  user;
+    }
+
+    public List<User> getallusers(){
+        List<User> allUsers = new ArrayList<>();
+        String sql = "SELECT * FROM user"; // Corrected SQL query
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
+
+            while (rs.next()) {
+                allUsers.add(new User(
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getString("email"),
+                        rs.getString("password"),
+                        rs.getString("role")
+                ));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return allUsers;
     }
 }
