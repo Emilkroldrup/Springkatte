@@ -1,13 +1,12 @@
-package com.example.springkatte;
+package com.example.springkatte.DAO;
 
+
+import com.example.springkatte.ServiceLayer.DatabaseConnection;
+import com.example.springkatte.Model.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 public class UserDAO {
 

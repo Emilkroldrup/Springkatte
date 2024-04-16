@@ -1,5 +1,7 @@
 package com.example.springkatte;
 
+import com.example.springkatte.DAO.UserDAO;
+import com.example.springkatte.Model.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -18,5 +20,4 @@ public class SpringkatteApplication {
         userdao.removeuser(1);
 
     }
-
 }

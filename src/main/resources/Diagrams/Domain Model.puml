@@ -1,0 +1,20 @@
+@startuml
+class Member {
+}
+
+class Cat {
+}
+
+class MemberList {
+}
+
+class PetList {
+}
+
+MemberList --* Member : Contains
+
+PetList *-- Member : has pets
+
+PetList --* Cat : Contains
+
+@enduml
