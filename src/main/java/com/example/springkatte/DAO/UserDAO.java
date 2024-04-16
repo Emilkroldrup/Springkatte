@@ -71,4 +71,27 @@ public class UserDAO {
         }
         return allUsers;
     }
+
+    public User EditUserDetails(int id, User user){
+        String sql = "UPDATE user SET name=?, email=?, password=?, role=? WHERE id=?";
+        try(Connection conn = DatabaseConnection.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql);)
+        {
+            pstmt.setString(1,user.getName());
+            pstmt.setString(2,user.getEmail());
+            pstmt.setString(3,user.getPassword());
+            if ("1".equals(user.getRole())) {
+                pstmt.setString(4, "User");
+            } else if ("2".equals(user.getRole())) {
+                pstmt.setString(4, "Admin");
+            } else {
+                pstmt.setString(4, "User");
+            }
+            pstmt.setInt(5,id);
+            pstmt.executeUpdate();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return user;
+    }
 }
