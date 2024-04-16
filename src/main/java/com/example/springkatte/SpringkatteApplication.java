@@ -11,7 +11,7 @@ public class SpringkatteApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringkatteApplication.class, args);
 
-        User user = new User("sfdfdffs","Madsss@gmail.com","jamssdsen6","2");
+        User user = new User("adsadasd","Madsss@gmail.com","jamssdsen6","2");
         UserDAO userdao = new UserDAO();
         System.out.println("hej");
 
