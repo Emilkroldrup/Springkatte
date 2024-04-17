@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cat Site</title>
+</head>
+<body>
+<form th:action="@{/DeleteUser}" th:object="${User}" method="post">
+    <p><button type="submit">Delete Account</button></p>
+</form>
+<form th:action="@{/GoToAccountDetails}" method="post">
+    <p><button type="submit">Account Details</button></p>
+</form>
+</body>
+</html>
