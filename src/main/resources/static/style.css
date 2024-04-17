@@ -48,7 +48,7 @@ button {
     border-radius: 5px;
 }
 
-input[type="submit"],
+input[type="submit"].log-in,
 input[type="button"].register-button,
 button {
     background-color: #4CAF50;
@@ -67,10 +67,10 @@ input[type="button"].register-button {
     background-color: #4a90e2;
 }
 
-input[type="button"].account-details {
+input[type="submit"].account-details {
     background-color: #d3d3d3;
 }
 
-input[type="button"].delete-account {
+input[type="submit"].delete-account {
     background-color: #d3d3d3;
 }

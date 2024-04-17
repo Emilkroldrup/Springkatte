@@ -7,10 +7,10 @@
 </head>
 <body>
 <form th:action="@{/DeleteUser}" th:object="${User}" method="post">
-    <input type="button" value="Delete Account" class="delete-account">
+    <input type="submit" value="Delete Account" class="delete-account">
 </form>
 <form th:action="@{/GoToAccountDetails}" method="post">
-    <input type="button" value="Account Details" class="account-details">
+    <input type="submit" value="Account Details" class="account-details">
 </form>
 </body>
 </html>
