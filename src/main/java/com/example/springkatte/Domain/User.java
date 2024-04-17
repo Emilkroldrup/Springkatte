@@ -2,85 +2,84 @@ package com.example.springkatte.Domain;
 
 public class User {
 
-    private int Id;
-    private String Name;
-    private String Email;
-    private String Password;
-
-    private String Role;
+    private int id;
+    private String name;
+    private String email;
+    private String password;
+    private String role;
 
     public User(){
 
     }
 
     public User(int id, String name, String email, String password,String role){
-        this.Id = id;
-        this.Name = name;
-        this.Email = email;
-        this.Password = password;
-        this.Role = role;
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.role = role;
     }
 
     public User( String name, String email, String password){
-        this.Name = name;
-        this.Email = email;
-        this.Password = password;
+        this.name = name;
+        this.email = email;
+        this.password = password;
     }
 
     public User( String name, String email, String password, String role){
-        this.Name = name;
-        this.Email = email;
-        this.Password = password;
-        this.Role = role;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.role = role;
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        name = name;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
     }
 
     public String getRole(){
-        return Role;
+        return role;
     }
 
     public void setRole(String role){
-        Role = role;
+        this.role = role;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "Id=" + Id +
-                ", Name='" + Name + '\'' +
-                ", Email='" + Email + '\'' +
-                ", Role='" + Role + '\'' +
+                "Id=" + id +
+                ", Name='" + name + '\'' +
+                ", Email='" + email + '\'' +
+                ", Role='" + role + '\'' +
                 '}';
     }
 }
