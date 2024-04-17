@@ -95,7 +95,7 @@ public class UserController {
     }
 
     @PostMapping("/GoToAccountDetails")
-    public String GotoHomeSite() {
+    public String GoToAccountDetails() {
 
         return "redirect:AccountDetails";
     }
