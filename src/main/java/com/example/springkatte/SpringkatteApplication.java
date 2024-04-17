@@ -1,7 +1,6 @@
 package com.example.springkatte;
 
-import com.example.springkatte.DAO.UserDAO;
-import com.example.springkatte.Model.Pets;
+import com.example.springkatte.UseCases.UserDAO;
 import com.example.springkatte.Model.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,17 +11,11 @@ public class SpringkatteApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringkatteApplication.class, args);
 
-        User user = new User("adsadasd","Madsss@gmail.com","jamssdsen6","2");
-        Pets pet = new Pets(1,2,1,"Katten","Bobkat");
+        User user = new User("egadsdsn","Madsss@gmail.com","jamssdsen6");
         UserDAO userdao = new UserDAO();
         System.out.println("hej");
 
-        //userdao.adduser(user); WORKS
-        // System.out.println(userdao.getallusers()); WORKS
-        //userdao.removeuser(1); WORKS
-        //userdao.EditUserDetails(2,user); WORKS
-       // System.out.println(userdao.GetDetailsFromId(46)); WORKS
-
+        userdao.removeuser(1);
 
     }
 }

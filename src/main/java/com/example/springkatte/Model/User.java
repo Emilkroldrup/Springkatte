@@ -7,31 +7,21 @@ public class User {
     private String Email;
     private String Password;
 
-    private String Role;
-
     public User(){
 
     }
 
-    public User(int id, String name, String email, String password,String role){
+    public User(int id, String name, String email, String password){
         this.Id = id;
         this.Name = name;
         this.Email = email;
         this.Password = password;
-        this.Role = role;
     }
 
     public User( String name, String email, String password){
         this.Name = name;
         this.Email = email;
         this.Password = password;
-    }
-
-    public User( String name, String email, String password, String role){
-        this.Name = name;
-        this.Email = email;
-        this.Password = password;
-        this.Role = role;
     }
 
     public int getId() {
@@ -66,21 +56,12 @@ public class User {
         Password = password;
     }
 
-    public String getRole(){
-        return Role;
-    }
-
-    public void setRole(String role){
-        Role = role;
-    }
-
     @Override
     public String toString() {
         return "User{" +
                 "Id=" + Id +
                 ", Name='" + Name + '\'' +
                 ", Email='" + Email + '\'' +
-                ", Role='" + Role + '\'' +
                 '}';
     }
 }

@@ -11,6 +11,7 @@ public class DatabaseConnection {
 
     static {
         try {
+            // This will load the MySQL driver, each DB has its own driver
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -18,6 +19,7 @@ public class DatabaseConnection {
     }
 
     public static Connection getConnection() throws SQLException {
+        // Set up the connection with the DB
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 }
