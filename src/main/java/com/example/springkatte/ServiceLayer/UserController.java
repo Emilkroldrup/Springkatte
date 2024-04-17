@@ -80,6 +80,13 @@ public class UserController {
     @PostMapping("/GoToAccountDetails")
     public String GotoHomeSite() {
 
-        return "redirect:/HomeSite";
+        return "redirect:AccountDetails";
+    }
+
+    @PostMapping("/EditUser")
+    public String EditUser(@ModelAttribute User user, Model model) {
+        userDAO.EditUserDetails(id,user);
+        model.addAttribute("User", user);
+        return "AccountDetails";
     }
 }

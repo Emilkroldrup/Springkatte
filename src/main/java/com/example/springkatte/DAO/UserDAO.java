@@ -25,11 +25,11 @@ public static int id = -1;
             pstmt.setString(2,user.getEmail());
             pstmt.setString(3,user.getPassword());
             if ("1".equals(user.getRole())) {
-                pstmt.setString(4, "User");
+                pstmt.setString(4, "Member");
             } else if ("2".equals(user.getRole())) {
                 pstmt.setString(4, "Admin");
             } else {
-                pstmt.setString(4, "User");
+                pstmt.setString(4, "Member");
             }
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -75,31 +75,34 @@ public static int id = -1;
         return allUsers;
     }
 
-    public User EditUserDetails(int id, User user){
-        String sql = "UPDATE user SET name=?, email=?, password=?, role=? WHERE id=?";
-        try(Connection conn = DatabaseConnection.getConnection();
-            PreparedStatement pstmt = conn.prepareStatement(sql);)
-        {
-            pstmt.setString(1,user.getName());
-            pstmt.setString(2,user.getEmail());
-            pstmt.setString(3,user.getPassword());
+  
+
+    public User EditUserDetails(int id, User user) {
+        String sql = "UPDATE user SET name=COALESCE(?, name), email=COALESCE(?, email), password=COALESCE(?, password), role=COALESCE(?, role) WHERE id=?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);) {
+            pstmt.setString(1, user.getName());
+            pstmt.setString(2, user.getEmail());
+            pstmt.setString(3, user.getPassword());
+
             if ("1".equals(user.getRole())) {
-                pstmt.setString(4, "User");
+                pstmt.setString(4, "Member");
             } else if ("2".equals(user.getRole())) {
                 pstmt.setString(4, "Admin");
             } else {
-                pstmt.setString(4, "User");
+                pstmt.setString(4, "Member");
             }
-            pstmt.setInt(5,id);
+
+            pstmt.setInt(5, id);
             pstmt.executeUpdate();
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return user;
     }
 
 
-    public boolean logincheck(User user){
+        public boolean logincheck(User user){
         List<User> allusers = new UserDAO().getallusers();
         boolean logincorrect = false;
         for(User u: allusers ){
