@@ -1,4 +1,4 @@
-package com.example.springkatte.DAO;
+package com.example.springkatte.UseCases;
 
 
 import com.example.springkatte.ServiceLayer.DatabaseConnection;

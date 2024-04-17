@@ -19,7 +19,7 @@ public class DatabaseConnection {
     }
 
     public static Connection getConnection() throws SQLException {
-        // Setup the connection with the DB
+        // Set up the connection with the DB
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 }
