@@ -2,6 +2,7 @@ package com.example.springkatte.Controllers;
 import com.example.springkatte.Domain.User;
 import com.example.springkatte.Infrastructure.DAO.UserDAO;
 
+import com.example.springkatte.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,8 @@ public class UserController {
     int id;
 
     @Autowired
+    private UserService userService;
+   @Autowired
     private UserDAO userDAO;
 
 
@@ -49,7 +52,7 @@ public class UserController {
 
     @GetMapping("/AccountDetails")
     public String showAccountDetails(Model model) {
-        User user = userDAO.getUserById(id); // Assuming id is defined somewhere
+        User user = userService.getUser(id); // Assuming id is defined somewhere
         model.addAttribute("User", user);
         return "AccountDetails";
     }
@@ -82,14 +85,14 @@ public class UserController {
 
     @PostMapping("/addUser")
     public String addUser(@ModelAttribute User user, Model model) {
-        userDAO.addUser(user);
+        userService.addUser(user);
         model.addAttribute("User", user);
         return "LoginPage";
     }
 
     @PostMapping("/DeleteUser")
     public String GotoHomeSite(@ModelAttribute User user, Model model) {
-        userDAO.removeUser(id);
+        userService.removeUser(id);
         model.addAttribute("User", user);
         return "LoginPage";
     }
@@ -104,7 +107,7 @@ public class UserController {
 
     @PostMapping("/AccountDetails")
     public String ShowAccountDetails(@ModelAttribute User user, Model model) {
-        user = userDAO.getUserById(id);
+        user = userService.getUser(id);
         model.addAttribute("User", user);
         return "AccountDetails";
     }
@@ -116,7 +119,7 @@ public class UserController {
 
     @PostMapping("/EditAccount")
     public String EditUser(@ModelAttribute User user, Model model) {
-        userDAO.EditUserDetails(id,user);
+        userService.updateUser(id,user);
         model.addAttribute("User", user);
         return "ChangeAccountDetails";
     }
