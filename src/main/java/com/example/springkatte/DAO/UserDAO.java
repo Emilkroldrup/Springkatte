@@ -54,7 +54,7 @@ public static int id = -1;
 
     public List<User> getallusers(){
         List<User> allUsers = new ArrayList<>();
-        String sql = "SELECT * FROM user"; // Corrected SQL query
+        String sql = "SELECT * FROM user"; 
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql);
              ResultSet rs = pstmt.executeQuery()) {
