@@ -91,7 +91,7 @@ public class UserController {
     public String GotoHomeSite(@ModelAttribute User user, Model model) {
         userDAO.removeuser(id);
         model.addAttribute("User", user);
-        return "HomeSite";
+        return "LoginPage";
     }
 
     @PostMapping("/GoToAccountDetails")
