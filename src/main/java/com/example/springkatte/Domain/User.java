@@ -1,4 +1,4 @@
-package com.example.springkatte.Model;
+package com.example.springkatte.Domain;
 
 public class User {
 

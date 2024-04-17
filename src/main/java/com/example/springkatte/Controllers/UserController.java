@@ -1,6 +1,7 @@
-package com.example.springkatte.ServiceLayer;
-import com.example.springkatte.DAO.UserDAO;
-import com.example.springkatte.Model.User;
+package com.example.springkatte.Controllers;
+import com.example.springkatte.Domain.User;
+import com.example.springkatte.Infrastructure.DAO.UserDAO;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

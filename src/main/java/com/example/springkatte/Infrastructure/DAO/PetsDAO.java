@@ -1,7 +1,7 @@
-package com.example.springkatte.DAO;
+package com.example.springkatte.Infrastructure.DAO;
 
-import com.example.springkatte.Model.Pets;
-import com.example.springkatte.ServiceLayer.DatabaseConnection;
+import com.example.springkatte.Domain.Pets;
+import com.example.springkatte.Infrastructure.DatabaseConnection;
 
 import javax.xml.crypto.Data;
 import java.sql.Connection;

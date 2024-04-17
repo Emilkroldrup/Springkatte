@@ -1,8 +1,8 @@
-package com.example.springkatte.UseCases;
+package com.example.springkatte.Application;
 
 
-import com.example.springkatte.ServiceLayer.DatabaseConnection;
-import com.example.springkatte.Model.User;
+import com.example.springkatte.Domain.User;
+import com.example.springkatte.Infrastructure.DatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

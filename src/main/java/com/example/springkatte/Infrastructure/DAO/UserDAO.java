@@ -1,8 +1,9 @@
-package com.example.springkatte.DAO;
+package com.example.springkatte.Infrastructure.DAO;
 
 
-import com.example.springkatte.ServiceLayer.DatabaseConnection;
-import com.example.springkatte.Model.User;
+import com.example.springkatte.Domain.User;
+import com.example.springkatte.Infrastructure.DatabaseConnection;
+
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
