@@ -23,7 +23,11 @@ public class LoginConfig {
                         authorizeRequests
                                 .requestMatchers("/**").hasRole("USER")
                 )
-                .formLogin(withDefaults());
+                .formLogin(formLogin ->
+                formLogin
+                        .loginPage("/login")
+                        .permitAll()
+                );
         return http.build();
     }
 
