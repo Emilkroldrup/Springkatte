@@ -39,7 +39,8 @@ form {
 input[type="text"],
 input[type="password"],
 input[type="submit"],
-input[type="button"] {
+input[type="button"],
+button {
     width: calc(100% - 20px);
     padding: 10px;
     margin: 10px 0;
@@ -48,7 +49,8 @@ input[type="button"] {
 }
 
 input[type="submit"],
-input[type="button"].register-button {
+input[type="button"].register-button,
+button {
     background-color: #4CAF50;
     color: white;
     cursor: pointer;
@@ -56,7 +58,8 @@ input[type="button"].register-button {
 }
 
 input[type="submit"]:hover,
-input[type="button"].register-button:hover {
+input[type="button"].register-button:hover,
+button:hover {
     opacity: 0.8;
 }
 
