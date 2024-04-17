@@ -49,7 +49,7 @@ public class PetsDAO {
     }
 
     // Get a pet by Id
-    public Pets getPetById(int id) throws SQLException {
+   /* public Pets getPetById(int id) throws SQLException {
         String sql = "SELECT * FROM pets WHERE id = ?";
         try(Connection con = DatabaseConnection.getConnection();
         PreparedStatement pstmt = con.prepareStatement(sql)){
@@ -65,4 +65,6 @@ public class PetsDAO {
             }
         }
     }
+
+    */
 }

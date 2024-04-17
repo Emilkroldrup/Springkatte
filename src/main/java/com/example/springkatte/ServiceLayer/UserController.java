@@ -40,6 +40,12 @@ public class UserController {
         return "HomeSite";
     }
 
+    @GetMapping("/AccountDetails")
+    public String AccountDetails(Model model){
+        model.addAttribute("User", new User());
+        return "AccountDetails";
+    }
+
 
 
     @PostMapping("/AddUser")
@@ -71,5 +77,9 @@ public class UserController {
         model.addAttribute("User", user);
         return "HomeSite";
     }
+    @PostMapping("/GoToAccountDetails")
+    public String GotoHomeSite() {
 
+        return "redirect:/HomeSite";
+    }
 }
