@@ -75,7 +75,15 @@ public static int id = -1;
         return allUsers;
     }
 
-  
+    public User GetDetailsFromId(int id) {
+        List<User> allUsers = getallusers();
+        for (User user : allUsers) {
+            if (user.getId() == id) {
+                return user;
+            }
+        }
+        return null;
+    }
 
     public User EditUserDetails(int id, User user) {
         String sql = "UPDATE user SET name=COALESCE(?, name), email=COALESCE(?, email), password=COALESCE(?, password), role=COALESCE(?, role) WHERE id=?";

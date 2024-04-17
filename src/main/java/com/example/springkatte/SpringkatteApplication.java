@@ -20,7 +20,8 @@ public class SpringkatteApplication {
         //userdao.adduser(user); WORKS
         // System.out.println(userdao.getallusers()); WORKS
         //userdao.removeuser(1); WORKS
-        userdao.EditUserDetails(2,user);
+        //userdao.EditUserDetails(2,user); WORKS
+       // System.out.println(userdao.GetDetailsFromId(46)); WORKS
 
 
     }

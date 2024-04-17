@@ -2,19 +2,17 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Account Details</title>
+    <title>Change Account Details</title>
 </head>
 <body>
-<form th:action="@{/AccountDetails}" th:object="${User}" method="post">
+<form th:action="@{/EditAccount}" th:object="${User}" method="post">
 
     <p>Navn: <input type="text" th:field="*{name}" /></p>
     <p>Email: <input type="text" th:field="*{email}" /></p>
     <p>Password: <input type="text" th:field="*{password}" /></p>
+    <p><button type="submit">Confirm</button></p>
 </form>
 
-<form th:action="@{/GoToChangeDetails}"  method="post">
 
-    <p><button type="submit">Change Details</button></p>
-</form>
 </body>
 </html>

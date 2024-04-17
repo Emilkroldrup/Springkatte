@@ -16,6 +16,14 @@ public class UserController {
     @Autowired
     private UserDAO userDAO;
 
+
+
+    @GetMapping("/UserLogin")
+    public String showLoginForm(Model model) {
+        model.addAttribute("User", new User());
+        return "UserLogin";
+    }
+
     @GetMapping("/UserCreation")
     public String Usercreation(Model model){
         model.addAttribute("User", new User());
@@ -28,12 +36,6 @@ public class UserController {
         return "UserDelete";
     }
 
-    @GetMapping("/UserLogin")
-    public String showLoginForm(Model model) {
-        model.addAttribute("User", new User());
-        return "UserLogin";
-    }
-
     @GetMapping("/HomeSite")
     public String ShowHomeSite(Model model) {
         model.addAttribute("User", new User());
@@ -41,19 +43,21 @@ public class UserController {
     }
 
     @GetMapping("/AccountDetails")
-    public String AccountDetails(Model model){
-        model.addAttribute("User", new User());
+    public String showAccountDetails(Model model) {
+        User user = userDAO.GetDetailsFromId(id); // Assuming id is defined somewhere
+        model.addAttribute("User", user);
         return "AccountDetails";
     }
 
-
-
-    @PostMapping("/AddUser")
-    public String AddUser(@ModelAttribute User user, Model model) {
-        userDAO.adduser(user);
-        model.addAttribute("User", user);
-        return "UserLogin";
+    @GetMapping("/ChangeAccountDetails")
+    public String EditAccountDetails(Model model){
+        model.addAttribute("User", new User());
+        return "ChangeAccountDetails";
     }
+
+
+
+
 
 
     @PostMapping("/LoginUser")
@@ -71,22 +75,45 @@ public class UserController {
         }
     }
 
+    @PostMapping("/AddUser")
+    public String AddUser(@ModelAttribute User user, Model model) {
+        userDAO.adduser(user);
+        model.addAttribute("User", user);
+        return "UserLogin";
+    }
+
     @PostMapping("/DeleteUser")
     public String GotoHomeSite(@ModelAttribute User user, Model model) {
         userDAO.removeuser(id);
         model.addAttribute("User", user);
         return "HomeSite";
     }
+
     @PostMapping("/GoToAccountDetails")
     public String GotoHomeSite() {
 
         return "redirect:AccountDetails";
     }
 
-    @PostMapping("/EditUser")
-    public String EditUser(@ModelAttribute User user, Model model) {
-        userDAO.EditUserDetails(id,user);
+
+
+    @PostMapping("/AccountDetails")
+    public String ShowAccountDetails(@ModelAttribute User user, Model model) {
+        user = userDAO.GetDetailsFromId(id);
         model.addAttribute("User", user);
         return "AccountDetails";
     }
+
+    @PostMapping("/GoToChangeDetails")
+    public String ToChangeDetails() {
+        return "redirect:ChangeAccountDetails";
+    }
+
+    @PostMapping("/EditAccount")
+    public String EditUser(@ModelAttribute User user, Model model) {
+        userDAO.EditUserDetails(id,user);
+        model.addAttribute("User", user);
+        return "ChangeAccountDetails";
+    }
+
 }
