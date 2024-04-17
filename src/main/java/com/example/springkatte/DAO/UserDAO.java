@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 
 public class UserDAO {
-
+public static int id = -1;
     public User adduser(User user){
         String sql = "INSERT INTO user (name,email,password,role) VALUES (?,?,?,?)";
         try(Connection conn = DatabaseConnection.getConnection();
@@ -96,5 +96,23 @@ public class UserDAO {
             e.printStackTrace();
         }
         return user;
+    }
+
+
+    public boolean logincheck(User user){
+        List<User> allusers = new UserDAO().getallusers();
+        boolean logincorrect = false;
+        for(User u: allusers ){
+            if(u.getEmail().equals(user.getEmail()) && u.getPassword().equals(user.getPassword())){
+             id = u.getId();
+             logincorrect = true;
+             break;
+            }
+        }
+        if(!logincorrect){
+            System.out.println("Details do not match pls try again");
+        }
+
+        return logincorrect;
     }
 }

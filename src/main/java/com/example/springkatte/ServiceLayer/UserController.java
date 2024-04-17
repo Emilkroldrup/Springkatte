@@ -11,16 +11,65 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class UserController {
+    int id;
 
     @Autowired
     private UserDAO userDAO;
 
+    @GetMapping("/UserCreation")
+    public String Usercreation(Model model){
+        model.addAttribute("User", new User());
+        return "UserCreation";
+    }
+
+    @GetMapping("/UserDelete")
+    public String UserDelete(Model model){
+        model.addAttribute("User", new User());
+        return "UserDelete";
+    }
+
+    @GetMapping("/UserLogin")
+    public String showLoginForm(Model model) {
+        model.addAttribute("User", new User());
+        return "UserLogin";
+    }
+
+    @GetMapping("/HomeSite")
+    public String ShowHomeSite(Model model) {
+        model.addAttribute("User", new User());
+        return "HomeSite";
+    }
 
 
-    @PostMapping("/User")
+
+    @PostMapping("/AddUser")
     public String AddUser(@ModelAttribute User user, Model model) {
         userDAO.adduser(user);
         model.addAttribute("User", user);
-        return "UserCreation";
+        return "UserLogin";
     }
+
+
+    @PostMapping("/LoginUser")
+    public String LoginUser(@ModelAttribute User user, Model model) {
+        boolean loginSuccessful = userDAO.logincheck(user);
+        id = UserDAO.id;
+        if (loginSuccessful) {
+
+            model.addAttribute("User", user);
+            return "HomeSite";
+
+        } else {
+            model.addAttribute("User", user);
+            return "UserLogin";
+        }
+    }
+
+    @PostMapping("/DeleteUser")
+    public String GotoHomeSite(@ModelAttribute User user, Model model) {
+        userDAO.removeuser(id);
+        model.addAttribute("User", user);
+        return "HomeSite";
+    }
+
 }
