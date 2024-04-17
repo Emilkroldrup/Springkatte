@@ -18,11 +18,15 @@ public class UserController {
     private UserDAO userDAO;
 
 
+    @GetMapping("/")
+    public String redirectToLoginPage(Model model) {
+        return "redirect:/LoginPage";
+    }
 
-    @GetMapping("/UserLogin")
+    @GetMapping("/LoginPage")
     public String showLoginForm(Model model) {
         model.addAttribute("User", new User());
-        return "UserLogin";
+        return "LoginPage";
     }
 
     @GetMapping("/UserCreation")
@@ -72,7 +76,7 @@ public class UserController {
 
         } else {
             model.addAttribute("User", user);
-            return "UserLogin";
+            return "LoginPage";
         }
     }
 
@@ -80,7 +84,7 @@ public class UserController {
     public String AddUser(@ModelAttribute User user, Model model) {
         userDAO.adduser(user);
         model.addAttribute("User", user);
-        return "UserLogin";
+        return "LoginPage";
     }
 
     @PostMapping("/DeleteUser")

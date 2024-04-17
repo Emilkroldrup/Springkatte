@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>UserCreation</title>
+    <link rel="stylesheet" type="text/css" href="../static/login.css">
 </head>
 
 <body>
@@ -13,12 +14,6 @@
     <p>Password: <input type="text" th:field="*{password}" /></p>
     <p><button type="submit">Create Account</button></p>
 </form>
-<form th:action="@{/LoginUser}" th:object="${User}" method="post">
-    <p>Email: <input type="text" th:field="*{email}" /></p>
-    <p>Password: <input type="text" th:field="*{password}" /></p>
-    <p><button type="submit">Login</button></p>
-</form>
-
 
 </body>
 </html>
