@@ -49,7 +49,7 @@ public class UserController {
 
     @GetMapping("/AccountDetails")
     public String showAccountDetails(Model model) {
-        User user = userDAO.GetDetailsFromId(id); // Assuming id is defined somewhere
+        User user = userDAO.getUserById(id); // Assuming id is defined somewhere
         model.addAttribute("User", user);
         return "AccountDetails";
     }
@@ -80,16 +80,16 @@ public class UserController {
         }
     }
 
-    @PostMapping("/AddUser")
-    public String AddUser(@ModelAttribute User user, Model model) {
-        userDAO.adduser(user);
+    @PostMapping("/addUser")
+    public String addUser(@ModelAttribute User user, Model model) {
+        userDAO.addUser(user);
         model.addAttribute("User", user);
         return "LoginPage";
     }
 
     @PostMapping("/DeleteUser")
     public String GotoHomeSite(@ModelAttribute User user, Model model) {
-        userDAO.removeuser(id);
+        userDAO.removeUser(id);
         model.addAttribute("User", user);
         return "LoginPage";
     }
@@ -104,7 +104,7 @@ public class UserController {
 
     @PostMapping("/AccountDetails")
     public String ShowAccountDetails(@ModelAttribute User user, Model model) {
-        user = userDAO.GetDetailsFromId(id);
+        user = userDAO.getUserById(id);
         model.addAttribute("User", user);
         return "AccountDetails";
     }

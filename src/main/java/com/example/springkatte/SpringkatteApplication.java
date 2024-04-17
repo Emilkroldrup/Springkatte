@@ -2,6 +2,7 @@ package com.example.springkatte;
 
 import com.example.springkatte.Domain.Pets;
 import com.example.springkatte.Domain.User;
+import com.example.springkatte.Infrastructure.DAO.PetsDAO;
 import com.example.springkatte.Infrastructure.DAO.UserDAO;
 
 import org.springframework.boot.SpringApplication;
@@ -18,11 +19,11 @@ public class SpringkatteApplication {
         UserDAO userdao = new UserDAO();
         System.out.println("hej");
 
-        //userdao.adduser(user); WORKS
-        // System.out.println(userdao.getallusers()); WORKS
-        //userdao.removeuser(1); WORKS
+        //userdao.addUser(user); WORKS
+        // System.out.println(userdao.getAllUsers()); WORKS
+        //userdao.removeUser(1); WORKS
         //userdao.EditUserDetails(2,user); WORKS
-       // System.out.println(userdao.GetDetailsFromId(46)); WORKS
+       // System.out.println(userdao.getUserById(46)); WORKS
 
 
     }

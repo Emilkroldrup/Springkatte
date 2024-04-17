@@ -17,7 +17,7 @@ import java.util.List;
 
 public class UserDAO {
 public static int id = -1;
-    public User adduser(User user){
+    public User addUser(User user){
         String sql = "INSERT INTO user (name,email,password,role) VALUES (?,?,?,?)";
         try(Connection conn = DatabaseConnection.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql))
@@ -40,7 +40,7 @@ public static int id = -1;
             return  user;
     }
 
-    public User removeuser(int id){
+    public User removeUser(int id){
         User user = new User();
         String sql = "Delete FROM user WHERE id = ?";
         try(Connection conn = DatabaseConnection.getConnection();
@@ -53,7 +53,7 @@ public static int id = -1;
         return  user;
     }
 
-    public List<User> getallusers(){
+    public List<User> getAllUsers(){
         List<User> allUsers = new ArrayList<>();
         String sql = "SELECT * FROM user"; 
         try (Connection conn = DatabaseConnection.getConnection();
@@ -76,8 +76,8 @@ public static int id = -1;
         return allUsers;
     }
 
-    public User GetDetailsFromId(int id) {
-        List<User> allUsers = getallusers();
+    public User getUserById(int id) {
+        List<User> allUsers = getAllUsers();
         for (User user : allUsers) {
             if (user.getId() == id) {
                 return user;
@@ -112,7 +112,7 @@ public static int id = -1;
 
 
         public boolean logincheck(User user){
-        List<User> allusers = new UserDAO().getallusers();
+        List<User> allusers = new UserDAO().getAllUsers();
         boolean logincorrect = false;
         for(User u: allusers ){
             if(u.getEmail().equals(user.getEmail()) && u.getPassword().equals(user.getPassword())){

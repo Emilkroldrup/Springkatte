@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class UserDAO {
 
-    public User adduser(User user){
+    public User addUser(User user){
 
             String sql = "INSERT INTO user (name,email,password) VALUES (?,?,?)";
         try(Connection conn = DatabaseConnection.getConnection();
@@ -26,7 +26,7 @@ public class UserDAO {
             return  user;
     }
 
-    public User removeuser(int id){
+    public User removeUser(int id){
         User user = new User();
         String sql = "Delete FROM user WHERE id = ?";
         try(Connection conn = DatabaseConnection.getConnection();
