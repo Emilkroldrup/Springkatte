@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Logout</title>
+    <link rel="stylesheet" type="text/css" href="../static/logout.css">
+</head>
+
+<body>
+<div class="logout-container">
+    <h2>Logout! hope to see you back soon</h2>
+    <form action="/logout" method="post">
+        <input type="submit" value="Click here to log out">
+        <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+    </form>
+</div>
+</body>
+</html>
