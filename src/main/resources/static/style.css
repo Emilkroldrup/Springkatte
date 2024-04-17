@@ -63,3 +63,11 @@ input[type="button"].register-button:hover {
 input[type="button"].register-button {
     background-color: #4a90e2;
 }
+
+input[type="button"].account-details {
+    background-color: #d3d3d3;
+}
+
+input[type="button"].delete-account {
+    background-color: #d3d3d3;
+}
