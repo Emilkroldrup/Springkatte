@@ -14,6 +14,10 @@ public class MemberList {
         Members.add(user);
     }
 
+    public void removeMember(User user) {
+        Members.remove(user);
+    }
+
     public ArrayList<User> getMembers() {
         return Members;
     }
@@ -26,4 +30,10 @@ public class MemberList {
         Members = members;
     }
 
+    @Override
+    public String toString() {
+        return "MemberList{" +
+                "Members=" + Members +
+                '}';
+    }
 }
