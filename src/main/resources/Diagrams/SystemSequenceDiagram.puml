@@ -1,0 +1,44 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+header System sekvens diagram
+actor Bruger
+
+title CatHomeGUI
+  Bruger <-- System: LoginScreen
+
+    alt Existing User
+        Bruger -> System: Type Email and Password
+        Bruger -> System: Login pressed
+        Bruger <-- System: Shows HomeSite
+    else New User
+        Bruger -> System: Create Account
+        Bruger -> System: Type details
+        Bruger <-- System: Account created
+        Bruger <-- System: LoginScreen
+
+    end
+    note left of Bruger: HomeSite
+    alt accountdetails
+    Bruger -> System: Account Details
+    Bruger <-- System: Shows AccountDetailsSite
+    Bruger <-- System: Shows name,email,password
+    alt EditAccountDetails
+    Bruger -> System: EditAccountDetails
+    Bruger <-- System: Shows EditAccountSite
+    Bruger -> System: User changes Details
+    Bruger -> System: User presses Confirm
+    Bruger <-- System: Changes details
+end
+end
+note left of Bruger: HomeSite
+ alt DeleteAccount
+    Bruger -> System: DeleteAccount
+    Bruger <-- System: Shows DeleteAccountSite
+    Bruger -> System: User presses DeleteAccount
+    Bruger -> System: User presses Confirm
+    Bruger <-- System: Deletes accounts
+end
+@enduml
