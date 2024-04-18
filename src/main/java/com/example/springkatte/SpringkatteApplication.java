@@ -1,11 +1,11 @@
 package com.example.springkatte;
 
-import com.example.springkatte.Application.MemberList;
-import com.example.springkatte.Application.PetList;
-import com.example.springkatte.Domain.Pets;
-import com.example.springkatte.Domain.User;
-import com.example.springkatte.Infrastructure.DAO.PetsDAO;
-import com.example.springkatte.Infrastructure.DAO.UserDAO;
+import com.example.springkatte.pets.domain.PetList;
+import com.example.springkatte.pets.domain.Pets;
+import com.example.springkatte.pets.domain.PetsDAO;
+import com.example.springkatte.users.domain.MemberList;
+import com.example.springkatte.users.domain.User;
+import com.example.springkatte.users.domain.UserDAO;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

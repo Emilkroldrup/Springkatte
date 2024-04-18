@@ -1,8 +1,8 @@
-package com.example.springkatte.Controllers;
-import com.example.springkatte.Domain.User;
-import com.example.springkatte.Infrastructure.DAO.UserDAO;
+package com.example.springkatte.users.adapter;
+import com.example.springkatte.users.application.UserService;
+import com.example.springkatte.users.domain.User;
+import com.example.springkatte.users.domain.UserDAO;
 
-import com.example.springkatte.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +17,7 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-   @Autowired
+    @Autowired
     private UserDAO userDAO;
 
 

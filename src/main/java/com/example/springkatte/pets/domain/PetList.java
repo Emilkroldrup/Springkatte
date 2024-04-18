@@ -1,6 +1,4 @@
-package com.example.springkatte.Application;
-
-import com.example.springkatte.Domain.Pets;
+package com.example.springkatte.pets.domain;
 
 import java.util.ArrayList;
 

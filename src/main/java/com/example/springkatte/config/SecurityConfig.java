@@ -1,4 +1,4 @@
-package com.example.springkatte.Infrastructure;
+package com.example.springkatte.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
