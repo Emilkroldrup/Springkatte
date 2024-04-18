@@ -21,8 +21,8 @@ title CatHomeGUI
 
     end
     note left of Bruger: HomeSite
-    alt accountdetails
-    Bruger -> System: Account Details
+    alt Accountdetails
+    Bruger -> System: Account Details Pressed
     Bruger <-- System: Shows AccountDetailsSite
     Bruger <-- System: Shows name,email,password
     alt EditAccountDetails
@@ -35,7 +35,7 @@ end
 end
 note left of Bruger: HomeSite
  alt DeleteAccount
-    Bruger -> System: DeleteAccount
+    Bruger -> System: DeleteAccount Pressed
     Bruger <-- System: Shows DeleteAccountSite
     Bruger -> System: User presses DeleteAccount
     Bruger -> System: User presses Confirm
