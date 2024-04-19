@@ -12,8 +12,8 @@ public class PetsDAO {
 
     // Add a pet
     public Pets addPet(Pets pet) {
-        String sql = "INSERT INTO pets (id,age,ownerId,name,race) VALUES (?,?,?,?,?)";
-        jdbcTemplate.update(sql, pet.getId(), pet.getAge(), pet.getOwnerId(), pet.getName(), pet.getRace());
+        String sql = "INSERT INTO pets (ownerId,name,race) VALUES (?,?,?,?)";
+        jdbcTemplate.update(sql, pet.getAge(), pet.getOwnerId(), pet.getName(), pet.getRace());
         return pet;
     }
 
