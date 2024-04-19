@@ -1,0 +1,15 @@
+@startuml Search for Pets
+left to right direction
+actor "User/Visitor" as user
+rectangle System {
+  usecase "Navigate to Search Page" as UC1
+  usecase "Input Search Criteria" as UC2
+  usecase "Retrieve Matching Pets" as UC3
+  usecase "Display Search Results" as UC4
+}
+
+user --> UC1
+user --> UC2
+System --> UC3
+System --> UC4
+@enduml

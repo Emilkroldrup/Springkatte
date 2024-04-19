@@ -1,0 +1,17 @@
+@startuml Add New Pet
+left to right direction
+actor "Registered User" as user
+rectangle System {
+  usecase "Navigate to Add New Pet Page" as UC1
+  usecase "Fill in Pet's Details" as UC2
+  usecase "Validate Details" as UC3
+  usecase "Add New Pet to Database" as UC4
+  usecase "Display Confirmation Message" as UC5
+}
+
+user --> UC1
+user --> UC2
+System --> UC3
+System --> UC4
+System --> UC5
+@enduml

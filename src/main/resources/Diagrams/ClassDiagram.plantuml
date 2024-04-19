@@ -1,0 +1,65 @@
+@startuml Class Diagram
+
+package "pets.domain" {
+    class Pets {
+        - id: int
+        - age: int
+        - ownerId: int
+        - name: String
+        - race: String
+    }
+}
+
+package "pets.application" {
+    class PetsService {
+        - petsDAO: PetsDAO
+        + addPet(Pets): Pets
+        + updatePet(Pets): Pets
+        + deletePet(int): void
+        + getPetById(int): Pets
+    }
+}
+
+package "pets.adapter" {
+    class PetsController {
+        - petsService: PetsService
+    }
+}
+
+package "users.domain" {
+    class User {
+        - id: int
+        - name: String
+        - email: String
+        - password: String
+        - role: String
+    }
+}
+
+package "users.application" {
+    class UserService {
+        - userDAO: UserDAO
+        + addUser(User): User
+        + removeUser(int): void
+        + getUser(int): User
+        + getAllUser(): List<User>
+        + updateUser(int, User): void
+    }
+}
+
+package "users.adapter" {
+    class UserController {
+        - userService: UserService
+    }
+
+    class LoginController {
+    }
+}
+
+PetsService ..> Pets : uses
+PetsController ..> PetsService : uses
+UserService ..> User : uses
+UserController ..> UserService : uses
+LoginController ..> UserService : uses
+
+@enduml

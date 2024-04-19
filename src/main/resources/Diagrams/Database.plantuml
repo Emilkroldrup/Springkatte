@@ -1,0 +1,23 @@
+@startuml Database Schema
+
+entity "User" as User {
+    + id : int
+    ---
+    name : varchar
+    email : varchar
+    password : varchar
+    role : varchar
+}
+
+entity "Pets" as Pets {
+    + id : int
+    ---
+    age : int
+    ownerId : int
+    name : varchar
+    race : varchar
+}
+
+User ||--o{ Pets : owns
+
+@enduml
