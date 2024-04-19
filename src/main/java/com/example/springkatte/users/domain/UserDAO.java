@@ -11,7 +11,7 @@ public class UserDAO {
 private JdbcTemplate jdbcTemplate;
 public static int id = -1;
 
-private static final String MEMBER_ROLE = "Member";
+private static final String MEMBER_ROLE = "user";
 
 public User addUser(User user){
     String sql = "INSERT INTO user (name,email,password,role) VALUES (?,?,?,?)";
