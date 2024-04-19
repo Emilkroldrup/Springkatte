@@ -1,4 +1,4 @@
-package com.example.springkatte.Domain;
+package com.example.springkatte.users.domain;
 
 public class User {
 

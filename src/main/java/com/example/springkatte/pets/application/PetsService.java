@@ -1,7 +1,8 @@
-package com.example.springkatte.Service;
+package com.example.springkatte.pets.application;
 
-import com.example.springkatte.Domain.Pets;
-import com.example.springkatte.Infrastructure.DAO.PetsDAO;
+import com.example.springkatte.pets.domain.Pets;
+import com.example.springkatte.pets.domain.PetsDAO;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,8 @@
-package com.example.springkatte.Service;
+package com.example.springkatte.users.application;
 
-import com.example.springkatte.Domain.User;
-import com.example.springkatte.Infrastructure.DAO.UserDAO;
+import com.example.springkatte.users.domain.User;
+import com.example.springkatte.users.domain.UserDAO;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +27,6 @@ public class UserService {
         return userDAO.getAllUsers();
     }
     public void updateUser(int id, User user){
-        userDAO.EditUserDetails(id, user);
+        userDAO.editUserDetails(id, user);
     }
 }

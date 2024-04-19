@@ -1,8 +1,6 @@
-package com.example.springkatte.Application;
+package com.example.springkatte.users.domain;
 
 import java.util.ArrayList;
-
-import com.example.springkatte.Domain.User;
 
 public class MemberList {
     ArrayList<User> Members = new ArrayList<>();
