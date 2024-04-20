@@ -27,7 +27,7 @@ public class SpringkatteApplication {
 
         System.out.println("hej");
 
-        //userdao.addUser(user); WORKS
+        userdao.addUser(user); 
         // System.out.println(userdao.getAllUsers()); WORKS
         //userdao.removeUser(1); WORKS
         //userdao.EditUserDetails(2,user); WORKS

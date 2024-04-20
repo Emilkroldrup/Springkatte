@@ -9,6 +9,7 @@ import java.util.List;
 public class UserDAO implements InterfaceUserDAO {
 @Autowired
 private JdbcTemplate jdbcTemplate;
+
 public static int id = -1;
 
 private static final String MEMBER_ROLE = "user";
