@@ -6,9 +6,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 @Service
 public class PetsDAO {
-    
+    private final JdbcTemplate jdbcTemplate;
+
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    public PetsDAO(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     // Add a pet
     public Pets addPet(Pets pet) {

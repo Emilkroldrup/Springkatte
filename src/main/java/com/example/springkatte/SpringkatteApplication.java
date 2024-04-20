@@ -9,37 +9,36 @@ import com.example.springkatte.users.domain.UserDAO;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class SpringkatteApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SpringkatteApplication.class, args);
+    }
 
-        User user = new User("adsadasd","Madsss@gmail.com","jamssdsen6","2");
-        User user2 = new User("bruger2", "bruger2@gmail.com", "bruger2kode", "1");
-        Pets pet = new Pets(1,2,1,"Katten","Bobkat");
-        UserDAO userdao = new UserDAO();
-        MemberList memberList = new MemberList();
-        PetsDAO pdao = new PetsDAO();
-        PetList plist = new PetList();
+    @Bean
+    public CommandLineRunner commandLineRunner(UserDAO userDAO, PetsDAO petsDAO) {
+        return args -> {
+            User user = new User("adsadasd","Madsss@gmail.com","jamssdsen6","2");
+            User user2 = new User("bruger2", "bruger2@gmail.com", "bruger2kode", "1");
+            Pets pet = new Pets(1,2,1,"Katten","Bobkat");
+            MemberList memberList = new MemberList();
+            PetList plist = new PetList();
 
+            System.out.println("hej");
 
-        System.out.println("hej");
+            // userDAO.addUser(user); WORKS
+            // System.out.println(userDAO.getAllUsers()); Works
 
-        //userdao.addUser(user); WORKS
-        // System.out.println(userdao.getAllUsers()); WORKS
-        //userdao.removeUser(1); WORKS
-        //userdao.EditUserDetails(2,user); WORKS
-       // System.out.println(userdao.getUserById(46)); WORKS
+            //memberList.addMember(user); WORKS
+            //memberList.addMember(user2); WORKS
+            //System.out.println(memberList); WORKS
 
-        //memberList.addMember(user); WORKS
-        //memberList.addMember(user2); WORKS
-        //System.out.println(memberList); WORKS
-
-        // plist.addPet(pet); WORKS
-        // System.out.println(plist); WORKS
-
-
+            // plist.addPet(pet);
+            // System.out.println(plist); WORKS
+        };
     }
 }
