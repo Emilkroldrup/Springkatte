@@ -16,9 +16,6 @@ class UserDAOTest {
     private JdbcTemplate jdbcTemplate;
 
 
-
-
-
     @Test
     void testAddUser() {
         User user = new User("Mads", "Mads@gmail.com", "mads12", "user");

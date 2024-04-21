@@ -41,11 +41,23 @@ public class UserDAO implements InterfaceUserDAO {
      * @return
      */
     @Override
-    public User removeUser(int id){
-        String sql = "DELETE FROM user WHERE id = ?";
-        jdbcTemplate.update(sql, id);
-        return new User();
+    public User removeUser(int id) {
+        User userRemoved = getUserById(id);
+
+        if (userRemoved != null) {
+            String sql = "DELETE FROM user WHERE id = ?";
+            int rowsAffected = jdbcTemplate.update(sql, id);
+
+            if (rowsAffected > 0) {
+                throw new RuntimeException("User with the id: " + id + " has been removed successfully");
+            } else {
+                throw new RuntimeException("Failed to remove user with id: " + id);
+            }
+        } else {
+            throw new RuntimeException("User with the id: " + id + " does not exist!");
+        }
     }
+
 
 
     /**
