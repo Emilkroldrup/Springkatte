@@ -49,7 +49,7 @@ public class UserDAO implements InterfaceUserDAO {
             int rowsAffected = jdbcTemplate.update(sql, id);
 
             if (rowsAffected > 0) {
-                throw new RuntimeException("User with the id: " + id + " has been removed successfully");
+                return userRemoved;
             } else {
                 throw new RuntimeException("Failed to remove user with id: " + id);
             }

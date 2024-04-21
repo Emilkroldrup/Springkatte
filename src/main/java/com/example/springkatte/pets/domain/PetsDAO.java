@@ -1,7 +1,6 @@
 package com.example.springkatte.pets.domain;
 
 import com.example.springkatte.pets.Interface.InterfacePetsDAO;
-import com.example.springkatte.users.domain.User;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -35,11 +34,24 @@ public class PetsDAO implements InterfacePetsDAO {
      * Deletes a pet from the database
      *
      * @param id
+     * @return
      */
     @Override
-    public void deletePet(int id) {
-        String sql = "DELETE FROM pets WHERE id = ?";
-        jdbcTemplate.update(sql, id);
+    public Pets deletePet(int id) {
+        Pets petRemoved = getPetById(id);
+
+        if (petRemoved != null) {
+            String sql = "DELETE FROM pets WHERE id = ?";
+            int rowsAffected = jdbcTemplate.update(sql, id);
+
+            if (rowsAffected > 0) {
+                return petRemoved;
+            } else {
+                throw new RuntimeException("Failed to remove pet with id: " + id);
+            }
+        } else {
+            throw new RuntimeException("Pet with the id: " + id + " does not exist!");
+        }
     }
 
     /**

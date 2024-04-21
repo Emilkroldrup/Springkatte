@@ -10,7 +10,7 @@ public interface InterfacePetsDAO {
     Pets addPet(Pets pet);
 
     // Delete a pet
-    void deletePet(int id);
+    Pets deletePet(int id);
 
     // Update a pet
     Pets updatePet(Pets pet);
