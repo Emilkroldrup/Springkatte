@@ -2,6 +2,8 @@ package com.example.springkatte.pets.Interface;
 
 import com.example.springkatte.pets.domain.Pets;
 
+import java.util.List;
+
 public interface InterfacePetsDAO {
 
     // Add a pet
@@ -15,4 +17,6 @@ public interface InterfacePetsDAO {
 
     // Get a pet by Id
     Pets getPetById(int id);
+
+    List<Pets> getallPets();
 }
