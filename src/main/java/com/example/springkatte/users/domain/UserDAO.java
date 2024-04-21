@@ -19,6 +19,12 @@ public class UserDAO implements InterfaceUserDAO {
 
     private static final String MEMBER_ROLE = "user";
 
+    /**
+     * Adds a new user to the database
+     *
+     * @param user
+     * @return the new user
+     */
     @Override
     public User addUser(User user){
         String sql = "INSERT INTO user (name,email,password,role) VALUES (?,?,?,?)";
@@ -27,6 +33,13 @@ public class UserDAO implements InterfaceUserDAO {
         return user;
     }
 
+
+    /**
+     * Removes a user from the database
+     *
+     * @param id
+     * @return
+     */
     @Override
     public User removeUser(int id){
         String sql = "DELETE FROM user WHERE id = ?";
@@ -34,6 +47,12 @@ public class UserDAO implements InterfaceUserDAO {
         return new User();
     }
 
+
+    /**
+     * Gives a list of all users
+     *
+     * @return a list of all users from the database
+     */
     @Override
     public List<User> getAllUsers() {
         String sql = "SELECT * FROM user";
@@ -46,6 +65,13 @@ public class UserDAO implements InterfaceUserDAO {
         ));
     }
 
+
+    /**
+     * Gives a specific user by using its id
+     *
+     * @param id
+     * @return the user with the given id
+     */
     @Override
     public User getUserById(int id) {
         String sql = "SELECT * FROM user WHERE id = ?";
@@ -58,6 +84,13 @@ public class UserDAO implements InterfaceUserDAO {
         ), id);
     }
 
+    /**
+     * Updates a user in the database
+     *
+     * @param id
+     * @param user
+     * @return the updated user
+     */
     @Override
     public User editUserDetails(int id, User user) {
         String sql = "UPDATE user SET name=COALESCE(?, name), email=COALESCE(?, email), password=COALESCE(?, password), role=COALESCE(?, role) WHERE id=?";
@@ -66,6 +99,12 @@ public class UserDAO implements InterfaceUserDAO {
         return user;
     }
 
+    /**
+     * Checks if everything matches before logging in
+     *
+     * @param user
+     * @return true of false
+     */
     @Override
     public boolean logincheck(User user){
         String sql = "SELECT * FROM user WHERE email = ? AND password = ?";

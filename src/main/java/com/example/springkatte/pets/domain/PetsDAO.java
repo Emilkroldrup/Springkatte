@@ -18,7 +18,12 @@ public class PetsDAO implements InterfacePetsDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    // Add a pet
+    /**
+     * Adds a pet to the database
+     *
+     * @param pet
+     * @return the added pet
+     */
     @Override
     public Pets addPet(Pets pet) {
         String sql = "INSERT INTO pets (ownerId,name,race) VALUES (?,?,?,?)";
@@ -26,14 +31,23 @@ public class PetsDAO implements InterfacePetsDAO {
         return pet;
     }
 
-    // Delete a pet
+    /**
+     * Deletes a pet from the database
+     *
+     * @param id
+     */
     @Override
     public void deletePet(int id) {
         String sql = "DELETE FROM pets WHERE id = ?";
         jdbcTemplate.update(sql, id);
     }
 
-    // Update a pet
+    /**
+     * Updates a pet in the database
+     *
+     * @param pet
+     * @return the updated pet
+     */
     @Override
     public Pets updatePet(Pets pet) {
         String sql = "UPDATE pets SET age = ?, ownerId = ?, name = ?, race = ? WHERE id = ?";
@@ -41,7 +55,12 @@ public class PetsDAO implements InterfacePetsDAO {
         return pet;
     }
 
-    // Get a pet by Id
+    /**
+     * Gives a specific pet by using its id
+     *
+     * @param id
+     * @return the pet with the given id
+     */
     @Override
     public Pets getPetById(int id) {
         String sql = "SELECT * FROM pets WHERE id = ?";
@@ -54,6 +73,11 @@ public class PetsDAO implements InterfacePetsDAO {
         ), id);
     }
 
+    /**
+     * Gives a list of all pets in the database
+     *
+     * @return a list of all pets in the database
+     */
     @Override
     public List<Pets> getallPets() {
         String sql = "SELECT * FROM pets";
