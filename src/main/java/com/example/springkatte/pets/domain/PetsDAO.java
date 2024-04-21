@@ -1,9 +1,12 @@
 package com.example.springkatte.pets.domain;
 
 import com.example.springkatte.pets.Interface.InterfacePetsDAO;
+import com.example.springkatte.users.domain.User;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import java.util.List;
 
 @Service
 public class PetsDAO implements InterfacePetsDAO {
@@ -45,5 +48,17 @@ public class PetsDAO implements InterfacePetsDAO {
                 rs.getString("name"),
                 rs.getString("race")
         ), id);
+    }
+
+    @Override
+    public List<Pets> getallPets() {
+        String sql = "SELECT * FROM pets";
+        return jdbcTemplate.query(sql, (rs, rowNum) -> new Pets(
+                rs.getInt("id"),
+                rs.getInt("age"),
+                rs.getInt("ownerid"),
+                rs.getString("name"),
+                rs.getString("race")
+        ));
     }
 }
