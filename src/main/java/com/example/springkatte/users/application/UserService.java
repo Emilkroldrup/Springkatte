@@ -29,4 +29,8 @@ public class UserService {
     public void updateUser(int id, User user){
         userDAO.editUserDetails(id, user);
     }
+
+    public boolean loginCheck(User user){
+        return  userDAO.logincheck(user);
+    }
 }
