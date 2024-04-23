@@ -122,6 +122,6 @@ public class UserController {
     public String EditUser(@ModelAttribute User user, Model model, Principal principal) {
         int id = getCurrentUserId(principal);
         userService.updateUser(id, user);
-        return "ChangeAccountDetails";
+        return "redirect:HomeSite";
     }
 }
