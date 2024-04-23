@@ -26,7 +26,7 @@ public class UserController {
     // current user function :P
     private int getCurrentUserId(Principal principal) {
         String email = principal.getName();
-        User currentUser = userDAO.getUserIdByEmail(email);
+        User currentUser = userDAO.getUserByEmail(email);
         return currentUser.getId();
     }
 

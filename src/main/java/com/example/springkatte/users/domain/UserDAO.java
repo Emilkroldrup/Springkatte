@@ -125,16 +125,21 @@ public class UserDAO implements InterfaceUserDAO {
     }
 
     @Override
-    public int getUserIdByEmail(String email) {
+    public User getUserByEmail(String email) {
         try{
-            String sql = "SELECT id * FROM user WHERE email = ?";
-            return jdbcTemplate.queryForObject(sql, Integer.class, email);
+            String sql = "SELECT * FROM user WHERE email = ?";
+            return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> new User(
+                    rs.getInt("id"),
+                    rs.getString("name"),
+                    rs.getString("email"),
+                    rs.getString("password"),
+                    rs.getString("role")
+            ), email);
         } catch (Exception e){
-            throw new RuntimeException("Error getting user by email");
+            throw new RuntimeException("Failed to get User by email" + e.getMessage());
         }
 
     }
-
 
     /**
      * Updates a user in the database
