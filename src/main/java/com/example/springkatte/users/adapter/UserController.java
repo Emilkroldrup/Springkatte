@@ -36,7 +36,7 @@ public class UserController {
         return "HomeSite";
     }
 
-   /* @PostMapping("/LoginUser")
+  /*  @PostMapping("/LoginUser")
     public String LoginUser(@ModelAttribute User user, Model model) {
         boolean loginSuccessful = userService.loginCheck(user);
         id = UserDAO.id;
@@ -51,7 +51,7 @@ public class UserController {
         }
     }
 
-    */
+   */
 
 
     @GetMapping("/UserCreation")

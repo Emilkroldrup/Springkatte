@@ -61,23 +61,37 @@ public class SecurityConfig {
     }
 
     @Bean
-    public UserDetailsService userDetailsService() {
+    public UserDetailsService userDetailsService(UserDAO userDAO) {
         List<UserDetails> userdetailslist = new ArrayList<>();
 
         List<com.example.springkatte.users.domain.User> users = userDAO.getAllUsers();
 
+
         for (com.example.springkatte.users.domain.User user : users) {
-            UserDetails userDetails = User.withUsername(user.getEmail())
-                    .passwordEncoder(passwordEncoder()::encode)
-                    .password(user.getPassword())
-                    .roles(user.getRole())
-                    .build();
-            userdetailslist.add(userDetails);
+            boolean userExists = false;
+
+
+            for (UserDetails userDetails : userdetailslist) {
+                if (userDetails.getUsername().equals(user.getEmail())) {
+                    userExists = true;
+                    break;
+                }
+            }
+
+            if (!userExists) {
+                UserDetails userDetails = User.withUsername(user.getEmail())
+                        .passwordEncoder(passwordEncoder()::encode)
+                        .password(user.getPassword())
+                        .roles(user.getRole())
+                        .build();
+                userdetailslist.add(userDetails);
+
+            }
         }
+
 
         return new InMemoryUserDetailsManager(userdetailslist);
     }
-
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
