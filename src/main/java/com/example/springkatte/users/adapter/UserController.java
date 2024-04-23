@@ -2,6 +2,10 @@ package com.example.springkatte.users.adapter;
 
 import com.example.springkatte.users.application.UserService;
 import com.example.springkatte.users.domain.User;
+import com.example.springkatte.users.domain.UserDAO;
+
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +20,16 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+   
+    @Autowired
+    private UserDAO userDAO;    
 
+    // current user function :P
+    private int getCurrentUserId(Principal principal) {
+        String email = principal.getName();
+        User currentUser = userDAO.getUserIdByEmail(email);
+        return currentUser.getId();
+    }
 
 
     @GetMapping("/")
@@ -75,18 +88,21 @@ public class UserController {
     }
 
     @PostMapping("/DeleteUser")
-    public String GotoHomeSite(@ModelAttribute User user, Model model) {
+    public String GotoHomeSite(@ModelAttribute User user, Model model, Principal principal) {
+        int id = getCurrentUserId(principal);
         userService.removeUser(id);
         model.addAttribute("User", user);
         return "LoginPage";
     }
 
     @GetMapping("/AccountDetails")
-    public String showAccountDetails(Model model) {
+    public String showAccountDetails(Model model, Principal principal) {
+        int id = getCurrentUserId(principal);
         User user = userService.getUser(id);
         model.addAttribute("User", user);
         return "AccountDetails";
     }
+
 
     @PostMapping("/GoToAccountDetails")
     public String GoToAccountDetails() {
@@ -95,7 +111,8 @@ public class UserController {
     }
 
     @PostMapping("/AccountDetails")
-    public String ShowAccountDetails(@ModelAttribute User user, Model model) {
+    public String ShowAccountDetails(@ModelAttribute User user, Model model, Principal principal) {
+        int id = getCurrentUserId(principal);
         user = userService.getUser(id);
         model.addAttribute("User", user);
         return "AccountDetails";
@@ -115,8 +132,9 @@ public class UserController {
     }
 
     @PostMapping("/EditAccount")
-    public String EditUser(@ModelAttribute User user, Model model) {
-        userService.updateUser(id,user);
+    public String EditUser(@ModelAttribute User user, Model model, Principal principal) {
+        int id = getCurrentUserId(principal);
+        userService.updateUser(id, user);
         model.addAttribute("User", user);
         return "ChangeAccountDetails";
     }

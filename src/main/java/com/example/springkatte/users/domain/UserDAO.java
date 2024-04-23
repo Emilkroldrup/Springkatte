@@ -99,15 +99,15 @@ public class UserDAO implements InterfaceUserDAO {
     }
 
     @Override
-    public User getUserIdByUsername(String name) {
-        String sql = "SELECT * FROM user WHERE name = ?";
+    public User getUserIdByEmail(String email) {
+        String sql = "SELECT * FROM user WHERE email = ?";
         return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> new User(
                 rs.getInt("id"),
                 rs.getString("name"),
                 rs.getString("email"),
                 rs.getString("password"),
                 rs.getString("role")
-        ), name);
+        ), email);
     }
 
 

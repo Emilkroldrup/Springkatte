@@ -16,7 +16,7 @@ public interface InterfaceUserDAO {
 
     User getUserById(int id);
 
-    User getUserIdByUsername(String name);
+    User getUserIdByEmail(String email);
 
     User editUserDetails(int id, User user);
 

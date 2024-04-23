@@ -19,6 +19,13 @@
     <img src="../static/smolcat.jpg" alt="Smol Cat" class="smolcat">
 </div>
 
+<form action="/EditAccount" method="post">
+    <label for="name">New name:</label><br>
+    <input type="text" id="name" name="name"><br>
+    <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+    <input type="submit" value="Edit Account">
+</form>
+
 <h2>Find the right cat breed for you below</h2>
     <a href="https://cats.com/cat-breeds">List of cat breeds</a>
 
