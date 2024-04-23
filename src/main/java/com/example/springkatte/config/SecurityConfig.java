@@ -47,15 +47,14 @@ public class SecurityConfig {
                 )
                 .formLogin(formLogin ->
                         formLogin
-                                .loginPage("/login")
-                                .loginProcessingUrl("/login")
+                                .loginPage("/LoginPage")
                                 .defaultSuccessUrl("/HomeSite")
                                 .permitAll()
                 )
                 .logout(logout ->
                         logout
                                 .logoutUrl("/logout")
-                                .logoutSuccessUrl("/login?logout")
+                                .logoutSuccessUrl("/LoginPage?logout")
                 );
         return http.build();
     }

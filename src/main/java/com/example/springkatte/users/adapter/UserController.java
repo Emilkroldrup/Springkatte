@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
 
@@ -32,7 +33,10 @@ public class UserController {
 
 
     @GetMapping("/")
-    public String redirectToLoginPage(Model model) {
+    public String defaultRedirect(@RequestParam(required = false) String continueParam) {
+        if (continueParam != null && !continueParam.isEmpty()) {
+            return "redirect:" + continueParam;
+        }
         return "redirect:/LoginPage";
     }
 
@@ -40,6 +44,11 @@ public class UserController {
     public String showLoginForm(Model model) {
         model.addAttribute("User", new User());
         return "LoginPage";
+    }
+
+    @GetMapping("/logout")
+    public String logout() {
+        return "LogoutPage";
     }
 
     @GetMapping("/HomeSite")
