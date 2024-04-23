@@ -2,15 +2,25 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Cat Site</title>
+    <title>Catbook</title>
     <link rel="stylesheet" type="text/css" href="../static/style.css">
 </head>
 <body>
-<form th:action="@{/DeleteUser}" th:object="${User}" method="post">
-    <input type="submit" value="Delete Account" class="delete-account">
-</form>
-<form th:action="@{/GoToAccountDetails}" method="post">
-    <input type="submit" value="Account Details" class="account-details">
-</form>
+<h1>Welcome to Catbook!</h1>
+
+<div class="topnav" id="homePageNav">
+    <a class="active" href="HomeSite.html">Home</a>
+    <a href="AccountDetails.html">My account</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#events">Events</a>
+</div>
+
+<div class="jpeg-container">
+    <img src="../static/smolcat.jpg" alt="Smol Cat" class="smolcat">
+</div>
+
+<h2>Find the right cat breed for you below</h2>
+    <a href="https://cats.com/cat-breeds">List of cat breeds</a>
+
 </body>
 </html>

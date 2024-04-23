@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 
 @Controller
 public class UserController {
@@ -42,6 +44,12 @@ public class UserController {
     public String UserDelete(Model model){
         model.addAttribute("User", new User());
         return "UserDelete";
+    }
+    @GetMapping("/MemberList")
+    public String getAllUsers(Model model) {
+        List<User> userList = userService.getAllUser();
+        model.addAttribute("UserList", userList);
+        return "MemberList";
     }
 
     @GetMapping("/HomeSite")

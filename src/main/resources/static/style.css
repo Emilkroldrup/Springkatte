@@ -23,15 +23,44 @@ body {
     margin-top: 50px;
 }
 
+.topnav {
+    background-color: #412a11;
+    overflow: hidden;
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    color: #fcfcfc;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #ffffff;
+    color: #412a11;
+}
+
+.topnav a.active {
+    background-color: #f8b971;
+    color: #412a11;
+}
+
 h2 {
-    color: #333;
+    color: #412a11;
     margin-bottom: 20px;
 }
 
+.jpeg-container {
+    text-align: center;
+    margin-top: 20px;
+}
 form {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
+    background-color: #f8b971;
+    padding: 20px;
+    border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
 }
@@ -68,9 +97,9 @@ input[type="button"].register-button {
 }
 
 input[type="submit"].account-details {
-    background-color: #d3d3d3;
+    background-color: #FEE2AC;
 }
 
 input[type="submit"].delete-account {
-    background-color: #d3d3d3;
+    background-color: #FEE2AC;
 }
