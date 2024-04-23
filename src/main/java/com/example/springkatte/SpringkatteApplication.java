@@ -29,8 +29,11 @@ public class SpringkatteApplication {
             PetList plist = new PetList();
 
             System.out.println("hej");
-
-            userDAO.addUser(user);
+            System.out.println("hej");
+            System.out.println("hej");
+            System.out.println("hej");
+            System.out.println("hej");
+            //userDAO.addUser(user); WORKS
             //userDAO.removeUser(62); WORKS
 
             // System.out.println(userDAO.getAllUsers()); Works

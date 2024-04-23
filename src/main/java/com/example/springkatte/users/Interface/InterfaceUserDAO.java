@@ -16,6 +16,8 @@ public interface InterfaceUserDAO {
 
     User getUserById(int id);
 
+    User getUserIdByUsername(String name);
+
     User editUserDetails(int id, User user);
 
     boolean logincheck(User user);

@@ -98,6 +98,19 @@ public class UserDAO implements InterfaceUserDAO {
         ), id);
     }
 
+    @Override
+    public User getUserIdByUsername(String name) {
+        String sql = "SELECT * FROM user WHERE name = ?";
+        return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> new User(
+                rs.getInt("id"),
+                rs.getString("name"),
+                rs.getString("email"),
+                rs.getString("password"),
+                rs.getString("role")
+        ), name);
+    }
+
+
     /**
      * Updates a user in the database
      *
@@ -129,6 +142,10 @@ public class UserDAO implements InterfaceUserDAO {
                 rs.getString("password"),
                 rs.getString("role")
         ), user.getEmail(), user.getPassword());
+        if(u != null){
+            id = u.getId();
+        }
+
         return u != null;
     }
 }

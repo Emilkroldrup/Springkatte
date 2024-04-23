@@ -1,8 +1,7 @@
 package com.example.springkatte.users.adapter;
+
 import com.example.springkatte.users.application.UserService;
 import com.example.springkatte.users.domain.User;
-import com.example.springkatte.users.domain.UserDAO;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,13 +36,12 @@ public class UserController {
         return "HomeSite";
     }
 
-
-    @PostMapping("/LoginUser")
+   /* @PostMapping("/LoginUser")
     public String LoginUser(@ModelAttribute User user, Model model) {
         boolean loginSuccessful = userService.loginCheck(user);
         id = UserDAO.id;
         if (loginSuccessful) {
-
+            System.out.println("id" + id);
             model.addAttribute("User", user);
             return "HomeSite";
 
@@ -52,6 +50,9 @@ public class UserController {
             return "LoginPage";
         }
     }
+
+    */
+
 
     @GetMapping("/UserCreation")
     public String Usercreation(Model model){
