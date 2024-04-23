@@ -102,19 +102,7 @@ public class UserController {
     }
 
 
-    @PostMapping("/GoToAccountDetails")
-    public String GoToAccountDetails() {
 
-        return "redirect:AccountDetails";
-    }
-
-    @PostMapping("/AccountDetails")
-    public String ShowAccountDetails(@ModelAttribute User user, Model model, Principal principal) {
-        int id = getCurrentUserId(principal);
-        user = userService.getUser(id);
-        model.addAttribute("User", user);
-        return "AccountDetails";
-    }
 
 
 

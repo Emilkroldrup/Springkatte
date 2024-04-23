@@ -22,7 +22,7 @@ public class SpringkatteApplication {
     @Bean
     public CommandLineRunner commandLineRunner(UserDAO userDAO, PetsDAO petsDAO) {
         return args -> {
-            User user = new User("adsadasd","Madsss@gmail.com","jamssdsen6","2");
+            User user = new User("adsfdfsdffasd","Madsss@dsfsgmail.com","jamssdsen6","2");
             User user2 = new User("bruger2", "bruger2@gmail.com", "bruger2kode", "1");
             Pets pet = new Pets(1,2,1,"Katten","Bobkat");
             MemberList memberList = new MemberList();
@@ -33,7 +33,7 @@ public class SpringkatteApplication {
             System.out.println("hej");
             System.out.println("hej");
             System.out.println("hej");
-            //userDAO.addUser(user); WORKS
+            userDAO.addUser(user);
             //userDAO.removeUser(62); WORKS
 
             // System.out.println(userDAO.getAllUsers()); Works
