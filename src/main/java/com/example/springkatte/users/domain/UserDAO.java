@@ -155,7 +155,10 @@ public class UserDAO implements InterfaceUserDAO {
         try{
             String sql = "UPDATE user SET name=COALESCE(?, name), email=COALESCE(?, email), password=COALESCE(?, password), role=COALESCE(?, role) WHERE id=?";
             String role = MEMBER_ROLE.equals(user.getRole()) ? MEMBER_ROLE : "2".equals(user.getRole()) ? "Admin" : MEMBER_ROLE;
-            jdbcTemplate.update(sql, user.getName(), user.getEmail(), user.getPassword(), role, id);
+            if( !user.getName().isEmpty() && !user.getEmail().isEmpty()  && !user.getPassword().isEmpty()){
+                jdbcTemplate.update(sql, user.getName(), user.getEmail(), user.getPassword(), role, id);
+            }
+
             return user;
         } catch (Exception e){
             throw new RuntimeException("Error editing user details" + e.getMessage());
