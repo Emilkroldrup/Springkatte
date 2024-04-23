@@ -38,6 +38,35 @@ body {
     font-size: 17px;
 }
 
+.profilepicture {
+    display: flex;
+    align-items: center;
+}
+
+.profilepicture img{
+    width: 150px;
+    height: auto;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+.pictureButton {
+    margin-right: auto;
+}
+
+.changeAcc {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+}
+
+.logo {
+    width: 300px;
+    height: auto;
+}
+
 .topnav a:hover {
     background-color: #ffffff;
     color: #412a11;
