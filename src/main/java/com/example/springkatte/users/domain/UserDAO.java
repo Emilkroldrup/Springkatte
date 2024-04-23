@@ -135,11 +135,13 @@ public class UserDAO implements InterfaceUserDAO {
                     rs.getString("password"),
                     rs.getString("role")
             ), email);
-        } catch (Exception e){
-            throw new RuntimeException("Failed to get User by email" + e.getMessage());
+        } catch(Exception e){
+            throw new RuntimeException("Failed to get user by Email" + e.getMessage());
         }
 
+
     }
+
 
     /**
      * Updates a user in the database
