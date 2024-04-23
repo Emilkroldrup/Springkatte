@@ -102,6 +102,7 @@ public class UserController {
         model.addAttribute("User", user);
         return "LoginPage";
     }
+
     @GetMapping("/AccountDetails")
     public String showAccountDetails(Model model, Principal principal) {
         int id = getCurrentUserId(principal);
@@ -110,17 +111,13 @@ public class UserController {
         return "AccountDetails";
     }
 
-
-
-
-
-
     @GetMapping("/ChangeAccountDetails")
-    public String EditAccountDetails(Model model){
-        model.addAttribute("User", new User());
+    public String EditAccountDetails(Model model, Principal principal){
+        int id = getCurrentUserId(principal);
+        User user = userService.getUser(id);
+        model.addAttribute("User", user);
         return "ChangeAccountDetails";
     }
-
 
     @PostMapping("/GoToChangeDetails")
     public String ToChangeDetails() {

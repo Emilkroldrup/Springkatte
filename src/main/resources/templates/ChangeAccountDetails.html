@@ -11,9 +11,9 @@
         <img src="../static/NoPicture.png" alt="No Profile Picture">
         <p><button type="submit" class="pictureButton">Change profile picture</button></p>
     </div>
-    <input type="text" th:field="*{name}" placeholder="Name" onfocus="clearText(this)" onblur="restoreText(this)"/>
-    <input type="text" th:field="*{email}" placeholder="Email" onfocus="clearText(this)" onblur="restoreText(this)"/>
-    <input type="text" th:field="*{password}" placeholder="Password" onfocus="clearText(this)" onblur="restoreText(this)"/>
+    <input type="text" th:field="*{name}"/>
+    <input type="text" th:field="*{email}"/>
+    <input type="text" th:field="*{password}"/>
     <button type="submit"><img src="../static/EditButton.png" alt="Button Image" width="15" height="15"></button>
 </form>
 </body>
