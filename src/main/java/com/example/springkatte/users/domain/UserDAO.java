@@ -30,24 +30,23 @@ public class UserDAO implements InterfaceUserDAO {
     @Override
     public User addUser(User user){
 
-        List<User> allusers = getAllUsers();
+        try {
+            List<User> allusers = getAllUsers();
 
-        for( User users : allusers){
-            if(user.getName().equals( users.getName()) || user.getEmail().equals(users.getEmail())){
-                try {
-                    throw new Exception("User with the same name or email already exists");
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
+            for (User users : allusers) {
+                if (user.getName().equals(users.getName()) || user.getEmail().equals(users.getEmail())) {
+                    throw new RuntimeException("User with the same name or email already exists");
                 }
-            }}
+            }
 
-        String sql = "INSERT INTO user (name,email,password,role) VALUES (?,?,?,?)";
-        String role = MEMBER_ROLE.equals(user.getRole()) ? MEMBER_ROLE : "Admin";
+            String sql = "INSERT INTO user (name,email,password,role) VALUES (?,?,?,?)";
+            String role = MEMBER_ROLE.equals(user.getRole()) ? MEMBER_ROLE : "Admin";
 
-        jdbcTemplate.update(sql, user.getName(), user.getEmail(), user.getPassword(), role);
-        return user;
-
-    }
+            jdbcTemplate.update(sql, user.getName(), user.getEmail(), user.getPassword(), role);
+            return user;
+        } catch (Exception e) {
+            throw new RuntimeException("Error adding user: " + e.getMessage(), e);
+    }}
 
     /**
      * Removes a user from the database
@@ -56,20 +55,23 @@ public class UserDAO implements InterfaceUserDAO {
      * @return
      */
     @Override
-    public User removeUser(int id) {
-        User userRemoved = getUserById(id);
-
-        if (userRemoved != null) {
-            String sql = "DELETE FROM user WHERE id = ?";
-            int rowsAffected = jdbcTemplate.update(sql, id);
-
-            if (rowsAffected > 0) {
-                return userRemoved;
-            } else {
+    public Boolean removeUser(int id) {
+        try{
+            User userRemoved = getUserById(id);
+            boolean removalSuccessful = false;
+            if (userRemoved == null) {
                 throw new RuntimeException("Failed to remove user with id: " + id);
+
             }
-        } else {
-            throw new RuntimeException("User with the id: " + id + " does not exist!");
+
+            String sql = "DELETE FROM user WHERE id = ?";
+            int rowsAffected =   jdbcTemplate.update(sql, id);
+            if(rowsAffected > 0){
+                removalSuccessful = true;
+            }
+            return  removalSuccessful;
+        } catch (Exception e){
+            throw new RuntimeException("Error Deleting user: " + e.getMessage(), e);
         }
     }
 
@@ -82,14 +84,20 @@ public class UserDAO implements InterfaceUserDAO {
      */
     @Override
     public List<User> getAllUsers() {
-        String sql = "SELECT * FROM user";
-        return jdbcTemplate.query(sql, (rs, rowNum) -> new User(
-                rs.getInt("id"),
-                rs.getString("name"),
-                rs.getString("email"),
-                rs.getString("password"),
-                rs.getString("role")
-        ));
+        try{
+            String sql = "SELECT * FROM user";
+
+            return jdbcTemplate.query(sql, (rs, rowNum) -> new User(
+                    rs.getInt("id"),
+                    rs.getString("name"),
+                    rs.getString("email"),
+                    rs.getString("password"),
+                    rs.getString("role")
+            ));
+        } catch (Exception e){
+            throw new RuntimeException("Error getting all users: " + e.getMessage(), e);
+        }
+
     }
 
 
@@ -101,26 +109,30 @@ public class UserDAO implements InterfaceUserDAO {
      */
     @Override
     public User getUserById(int id) {
-        String sql = "SELECT * FROM user WHERE id = ?";
-        return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> new User(
-                rs.getInt("id"),
-                rs.getString("name"),
-                rs.getString("email"),
-                rs.getString("password"),
-                rs.getString("role")
-        ), id);
+        try{
+            String sql = "SELECT * FROM user WHERE id = ?";
+            return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> new User(
+                    rs.getInt("id"),
+                    rs.getString("name"),
+                    rs.getString("email"),
+                    rs.getString("password"),
+                    rs.getString("role")
+            ), id);
+        } catch (Exception e){
+            throw new RuntimeException("Error getting user by id" + e.getMessage());
+        }
+
     }
 
     @Override
-    public User getUserIdByEmail(String email) {
-        String sql = "SELECT * FROM user WHERE email = ?";
-        return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> new User(
-                rs.getInt("id"),
-                rs.getString("name"),
-                rs.getString("email"),
-                rs.getString("password"),
-                rs.getString("role")
-        ), email);
+    public int getUserIdByEmail(String email) {
+        try{
+            String sql = "SELECT id * FROM user WHERE email = ?";
+            return jdbcTemplate.queryForObject(sql, Integer.class, email);
+        } catch (Exception e){
+            throw new RuntimeException("Error getting user by email");
+        }
+
     }
 
 
@@ -133,10 +145,15 @@ public class UserDAO implements InterfaceUserDAO {
      */
     @Override
     public User editUserDetails(int id, User user) {
-        String sql = "UPDATE user SET name=COALESCE(?, name), email=COALESCE(?, email), password=COALESCE(?, password), role=COALESCE(?, role) WHERE id=?";
-        String role = MEMBER_ROLE.equals(user.getRole()) ? MEMBER_ROLE : "2".equals(user.getRole()) ? "Admin" : MEMBER_ROLE;
-        jdbcTemplate.update(sql, user.getName(), user.getEmail(), user.getPassword(), role, id);
-        return user;
+        try{
+            String sql = "UPDATE user SET name=COALESCE(?, name), email=COALESCE(?, email), password=COALESCE(?, password), role=COALESCE(?, role) WHERE id=?";
+            String role = MEMBER_ROLE.equals(user.getRole()) ? MEMBER_ROLE : "2".equals(user.getRole()) ? "Admin" : MEMBER_ROLE;
+            jdbcTemplate.update(sql, user.getName(), user.getEmail(), user.getPassword(), role, id);
+            return user;
+        } catch (Exception e){
+            throw new RuntimeException("Error editing user details" + e.getMessage());
+        }
+
     }
 
     /**
@@ -147,18 +164,23 @@ public class UserDAO implements InterfaceUserDAO {
      */
     @Override
     public boolean logincheck(User user){
-        String sql = "SELECT * FROM user WHERE email = ? AND password = ?";
-        User u = jdbcTemplate.queryForObject(sql, (rs, rowNum) -> new User(
-                rs.getInt("id"),
-                rs.getString("name"),
-                rs.getString("email"),
-                rs.getString("password"),
-                rs.getString("role")
-        ), user.getEmail(), user.getPassword());
-        if(u != null){
-            id = u.getId();
+        try{
+            String sql = "SELECT * FROM user WHERE email = ? AND password = ?";
+            User u = jdbcTemplate.queryForObject(sql, (rs, rowNum) -> new User(
+                    rs.getInt("id"),
+                    rs.getString("name"),
+                    rs.getString("email"),
+                    rs.getString("password"),
+                    rs.getString("role")
+            ), user.getEmail(), user.getPassword());
+            if(u != null){
+                id = u.getId();
+            }
+
+            return u != null;
+        } catch (Exception e){
+            throw  new RuntimeException("Error logging in" + e.getMessage());
         }
 
-        return u != null;
     }
 }

@@ -10,13 +10,13 @@ public interface InterfaceUserDAO {
 
     User addUser(User user);
 
-    User removeUser(int id);
+    Boolean removeUser(int id);
 
     List<User> getAllUsers();
 
     User getUserById(int id);
 
-    User getUserIdByEmail(String email);
+    int getUserIdByEmail(String email);
 
     User editUserDetails(int id, User user);
 
