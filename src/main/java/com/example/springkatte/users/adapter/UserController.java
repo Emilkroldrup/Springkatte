@@ -3,15 +3,14 @@ package com.example.springkatte.users.adapter;
 import com.example.springkatte.users.application.UserService;
 import com.example.springkatte.users.domain.User;
 import com.example.springkatte.users.domain.UserDAO;
-
-import java.security.Principal;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.security.Principal;
 
 
 @Controller
@@ -94,7 +93,6 @@ public class UserController {
         model.addAttribute("User", user);
         return "LoginPage";
     }
-
     @GetMapping("/AccountDetails")
     public String showAccountDetails(Model model, Principal principal) {
         int id = getCurrentUserId(principal);
@@ -117,6 +115,7 @@ public class UserController {
         model.addAttribute("User", user);
         return "AccountDetails";
     }
+
 
 
     @GetMapping("/ChangeAccountDetails")
