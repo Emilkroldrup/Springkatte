@@ -1,5 +1,6 @@
 package com.example.springkatte.config;
 
+import com.example.springkatte.users.domain.UserDAO;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -12,6 +13,9 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.OrRequestMatcher;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -48,22 +52,36 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
 }
 
     @Bean
-    public UserDetailsService userDetailsService() {
-        UserDetails user = User.withUsername("user")
-                .passwordEncoder(passwordEncoder()::encode)
-                .password("password")
-                .roles("USER")
-                .build();
+    public UserDetailsService userDetailsService(UserDAO userDAO) {
+        List<UserDetails> userdetailslist = new ArrayList<>();
 
-        UserDetails admin = User.withUsername("admin")
-                .passwordEncoder(passwordEncoder()::encode)
-                .password("password")
-                .roles("ADMIN", "USER")
-                .build();
+        List<com.example.springkatte.users.domain.User> users = userDAO.getAllUsers();
 
-        return new InMemoryUserDetailsManager(user, admin);
+
+        for (com.example.springkatte.users.domain.User user : users) {
+            boolean userExists = false;
+
+
+            for (UserDetails userDetails : userdetailslist) {
+                if (userDetails.getUsername().equals(user.getEmail())) {
+                    userExists = true;
+                    break;
+                }
+            }
+
+            if (!userExists) {
+                UserDetails userDetails = User.withUsername(user.getEmail())
+                        .passwordEncoder(passwordEncoder()::encode)
+                        .password(user.getPassword())
+                        .roles(user.getRole())
+                        .build();
+                userdetailslist.add(userDetails);
+            }
+        }
+
+
+        return new InMemoryUserDetailsManager(userdetailslist);
     }
-
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
