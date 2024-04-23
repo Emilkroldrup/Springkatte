@@ -29,12 +29,25 @@ public class UserDAO implements InterfaceUserDAO {
      */
     @Override
     public User addUser(User user){
+
+        List<User> allusers = getAllUsers();
+
+        for( User users : allusers){
+            if(user.getName().equals( users.getName()) || user.getEmail().equals(users.getEmail())){
+                try {
+                    throw new Exception("User with the same name or email already exists");
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }}
+
         String sql = "INSERT INTO user (name,email,password,role) VALUES (?,?,?,?)";
         String role = MEMBER_ROLE.equals(user.getRole()) ? MEMBER_ROLE : "Admin";
+
         jdbcTemplate.update(sql, user.getName(), user.getEmail(), user.getPassword(), role);
         return user;
-    }
 
+    }
 
     /**
      * Removes a user from the database
