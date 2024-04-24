@@ -189,7 +189,7 @@ public class UserDAO implements InterfaceUserDAO {
 
             return u != null;
         } catch (Exception e){
-            throw  new RuntimeException("Error logging in" + e.getMessage());
+            throw new RuntimeException("Error logging in" + e.getMessage());
         }
 
     }

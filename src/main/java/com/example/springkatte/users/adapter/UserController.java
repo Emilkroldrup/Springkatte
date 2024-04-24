@@ -5,10 +5,7 @@ import com.example.springkatte.users.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
@@ -19,8 +16,13 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-   
 
+    @ExceptionHandler(RuntimeException.class)
+    public String handleRuntimeException(RuntimeException e, Model model) {
+        // Add the error message to the model
+        model.addAttribute("errorMessage", e.getMessage());
+        return "error";
+    }
 
     // current user function :P
     private int getCurrentUserId(Principal principal) {
