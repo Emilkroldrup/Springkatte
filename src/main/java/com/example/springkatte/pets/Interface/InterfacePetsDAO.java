@@ -19,4 +19,7 @@ public interface InterfacePetsDAO {
     Pets getPetById(int id);
 
     List<Pets> getallPets();
+
+
+    List<Pets> getallPetsbyOwnerid(int ownerid);
 }

@@ -62,6 +62,41 @@ body {
     font-weight: bold;
 }
 
+.pets {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+}
+
+.catPictureLabel {
+    padding: 10px 25px;
+    background-color: #4CAF50;
+    color: white;
+   
+    border-radius: 500px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.nextpet {
+    position: absolute;
+    top: 80%;
+    left: 62%;
+    transform: translateX(-50%);
+    font-weight: bold;
+}
+
+.prevpet {
+    position: absolute;
+    top: 80%;
+    left: 39%;
+    transform: translateX(-50%);
+    font-weight: bold;
+}
+
+
 .logo {
     width: 300px;
     height: auto;
@@ -166,3 +201,5 @@ input[type="submit"].account-details {
 input[type="submit"].delete-account {
     background-color: #FEE2AC;
 }
+
+
