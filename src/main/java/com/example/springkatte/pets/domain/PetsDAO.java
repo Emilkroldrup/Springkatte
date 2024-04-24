@@ -62,9 +62,9 @@ public class PetsDAO implements InterfacePetsDAO {
      */
     @Override
     public Pets updatePet(Pets pet) {
-        String sql = "UPDATE pets SET age = COALESCE(?, age), name = COALESCE(?, name), race = COALESCE(?, race) WHERE pet_id = ?";
+        String sql = "UPDATE pets SET age = COALESCE(?, age), name = COALESCE(?, name), race = COALESCE(?, race),ownerid = COALESCE(?, ownerid) WHERE pet_id = ?";
 
-            jdbcTemplate.update(sql, pet.getAge(), pet.getOwnerId(), pet.getName(), pet.getRace(), pet.getId());
+            jdbcTemplate.update(sql, pet.getAge(), pet.getName(), pet.getRace(), pet.getOwnerId(), pet.getId());
 
         return pet;
     }

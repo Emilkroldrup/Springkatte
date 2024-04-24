@@ -39,7 +39,7 @@ public class PetsController {
     }
 
     @GetMapping("/userpets")
-    public String showUserPets(Model model,Principal principal) {
+    public String showUserPets(Model model, Principal principal) {
         int userId = getCurrentUserId(principal);
         User user = userService.getUser(userId);
         List<Pets> userPets = petsService.getallPetsbyOwnerid(userId);
@@ -56,6 +56,7 @@ public class PetsController {
 
         return "userPets";
     }
+
     @PostMapping("/gotouserPets")
     public String ToUserPets() {
         return "redirect:userpets";
@@ -80,13 +81,26 @@ public class PetsController {
         Pets pet = petsService.getPetByIds(petId, ownerId);
 
         model.addAttribute("Pet", pet);
+        System.out.println("Hvad" + pet);
 
         return "editUserPets";
     }
 
     @PostMapping("/updatePet")
-    public String updatePet(){
+    public String updatePet( @RequestParam("petId") int petId,
+                            @RequestParam("ownerid") int ownerid,
+                            @RequestParam("petName") String petName,
+                            @RequestParam("petAge") int petAge,
+                            @RequestParam("petRace") String petRace) {
 
+
+
+        Pets updatedPet = new Pets(petId,petAge, ownerid, petName, petRace);
+        System.out.println("nej" + updatedPet);
+
+        petsService.updatePet(updatedPet);
+
+        // Redirect to the userpets page
         return "redirect:/userpets";
     }
 }
