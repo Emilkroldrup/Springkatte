@@ -75,11 +75,11 @@ public class PetsDAO implements InterfacePetsDAO {
      */
     @Override
     public Pets getPetById(int id) {
-        String sql = "SELECT * FROM pets WHERE id = ?";
+        String sql = "SELECT * FROM pets WHERE ownerid = ?";
         return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> new Pets(
-                rs.getInt("id"),
+                rs.getInt("pet_id"),
                 rs.getInt("age"),
-                rs.getInt("ownerId"),
+                rs.getInt("ownerid"),
                 rs.getString("name"),
                 rs.getString("race")
         ), id);
@@ -100,5 +100,16 @@ public class PetsDAO implements InterfacePetsDAO {
                 rs.getString("name"),
                 rs.getString("race")
         ));
+    }
+    @Override
+    public List<Pets> getallPetsbyOwnerid(int ownerid) {
+        String sql = "SELECT * FROM pets WHERE ownerid = ?";
+        return jdbcTemplate.query(sql, (rs, rowNum) -> new Pets(
+                rs.getInt("pet_id"),
+                rs.getInt("age"),
+                rs.getInt("ownerid"),
+                rs.getString("name"),
+                rs.getString("race")
+        ),ownerid );
     }
 }

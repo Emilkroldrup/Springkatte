@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>userpets</title>
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+</head>
+<body>
+<form th:action="@{/userPets}" th:object="${Pets}"  class="pets" method="post">
+    <div style="text-align: center;">
+        <label style="font-size: 25px; font-weight: bold;" >Your Pets</label>
+    </div>
+    <div class="profilepicture">
+        <img src="../static/Nocat.png" alt="No Profile Picture">
+        <label class="catPictureLabel">Your cat picture</label>
+    </div>
+    <p>Name: <input type="text" th:field="*{name}" /></p>
+    <p>Age: <input type="number" th:field="*{age}" /></p>
+    <p>Race: <input type="text" th:field="*{race}" /></p>
+
+
+</form>
+<form th:action="@{/nextPet}"  class="nextpet " method="post">
+    <button type="submit" >Next</button>
+</form>
+
+
+
+<form th:action="@{/prevPet}" class="prevpet " method="post">
+    <button type="submit">Previous</button>
+</form>
+
+
+</body>
+</html>
