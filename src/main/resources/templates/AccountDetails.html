@@ -11,9 +11,9 @@
     <div style="text-align: center;">
         <label style="font-size: 20px; font-weight: bold;">Account Details</label>
     </div>
-    <p>Name: <input type="text" th:field="*{name}" /></p>
-    <p>Age: <input type="text" th:field="*{email}" /></p>
-    <p>Password: <input type="text" th:field="*{password}" /></p>
+    <p>Name: <input type="text" th:field="*{name}" readonly /></p>
+    <p>Age: <input type="text" th:field="*{email}" readonly /></p>
+    <p>Password: <input type="text" th:field="*{password}" readonly /></p>
 </form>
 
 <form th:action="@{/GoToChangeDetails}"  method="post">

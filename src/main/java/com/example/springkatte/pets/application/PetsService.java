@@ -27,7 +27,11 @@ public class PetsService {
     }
 
     public Pets getPetById(int id) {
-        return petsDAO.getPetById(id);
+        return petsDAO.getPetByID(id);
+    }
+
+    public Pets getPetByIds(int id,int ownerid) {
+        return petsDAO.getPetByIds(id,ownerid);
     }
 
     public List<Pets> getAllPets() {

@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
 import java.util.List;
@@ -65,10 +67,26 @@ public class PetsController {
         return "redirect:/userpets";
     }
 
-    // Add a method to handle navigation to the previous pet
     @PostMapping("/prevPet")
     public String prevPet() {
         cuerrentpetindex--;
+        return "redirect:/userpets";
+    }
+
+    @GetMapping("/editUserPets/{petId}")
+    public String showEditUserPets(@PathVariable("petId") int petId, Model model, Principal principal) {
+        int ownerId = getCurrentUserId(principal);
+
+        Pets pet = petsService.getPetByIds(petId, ownerId);
+
+        model.addAttribute("Pet", pet);
+
+        return "editUserPets";
+    }
+
+    @PostMapping("/updatePet")
+    public String updatePet(){
+
         return "redirect:/userpets";
     }
 }

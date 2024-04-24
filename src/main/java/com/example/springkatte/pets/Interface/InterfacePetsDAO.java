@@ -10,13 +10,19 @@ public interface InterfacePetsDAO {
     Pets addPet(Pets pet);
 
     // Delete a pet
+
+
+
+
     Pets deletePet(int id);
 
     // Update a pet
     Pets updatePet(Pets pet);
 
-    // Get a pet by Id
-    Pets getPetById(int id);
+
+    Pets getPetByID(int id);
+
+    Pets getPetByIds(int id, int ownerid);
 
     List<Pets> getallPets();
 

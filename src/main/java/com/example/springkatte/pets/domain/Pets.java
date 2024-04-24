@@ -30,6 +30,12 @@ public class Pets {
         this.race = race;
     }
 
+    public Pets( String name, int age, String race) {
+        this.name = name;
+        this.age = age;
+
+        this.race = race;
+    }
     public int getId() {
         return id;
     }

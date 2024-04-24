@@ -64,7 +64,7 @@ body {
 
 .pets {
     position: absolute;
-    top: 45%;
+    top: 42%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-weight: bold;
@@ -74,7 +74,7 @@ body {
     padding: 10px 25px;
     background-color: #4CAF50;
     color: white;
-   
+
     border-radius: 500px;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -82,7 +82,7 @@ body {
 
 .nextpet {
     position: absolute;
-    top: 80%;
+    top: 79%;
     left: 62%;
     transform: translateX(-50%);
     font-weight: bold;
@@ -90,7 +90,7 @@ body {
 
 .prevpet {
     position: absolute;
-    top: 80%;
+    top: 79%;
     left: 39%;
     transform: translateX(-50%);
     font-weight: bold;

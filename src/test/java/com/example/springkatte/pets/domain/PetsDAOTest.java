@@ -55,7 +55,7 @@ class PetsDAOTest {
 
         InterfacePetsDAO petsDAO = mock(InterfacePetsDAO.class);
         when(petsDAO.addPet(pet)).thenReturn(pet);
-        when(petsDAO.getPetById(pet.getId())).thenReturn(pet);
+        when(petsDAO.getPetByID(pet.getId())).thenReturn(pet);
 
         Pets addpet = petsDAO.addPet(pet);
         petsDAO.deletePet(addpet.getId());

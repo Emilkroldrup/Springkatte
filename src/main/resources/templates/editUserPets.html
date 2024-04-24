@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit User Pets</title>
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+</head>
+<body>
+<h2>Edit Pet</h2>
+<form th:action="@{/updatePet}" method="post">
+    <input type="hidden" name="petId" th:value="${petId}" />
+    <p>Name: <input type="text" name="petName" th:value="${Pet.name}" /></p>
+    <p>Age: <input type="number" name="petAge" th:value="${Pet.age}" /></p>
+    <p>Race: <input type="text" name="petRace" th:value="${Pet.race}" /></p>
+    <button type="submit">Save Changes</button>
+</form>
+</body>
+</html>

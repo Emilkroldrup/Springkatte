@@ -38,7 +38,7 @@ public class PetsDAO implements InterfacePetsDAO {
      */
     @Override
     public Pets deletePet(int id) {
-        Pets petRemoved = getPetById(id);
+        Pets petRemoved = getPetByID(id);
 
         if (petRemoved != null) {
             String sql = "DELETE FROM pets WHERE id = ?";
@@ -62,10 +62,14 @@ public class PetsDAO implements InterfacePetsDAO {
      */
     @Override
     public Pets updatePet(Pets pet) {
-        String sql = "UPDATE pets SET age = ?, ownerId = ?, name = ?, race = ? WHERE id = ?";
-        jdbcTemplate.update(sql, pet.getAge(), pet.getOwnerId(), pet.getName(), pet.getRace(), pet.getId());
+        String sql = "UPDATE pets SET age = COALESCE(?, age), name = COALESCE(?, name), race = COALESCE(?, race) WHERE pet_id = ?";
+
+            jdbcTemplate.update(sql, pet.getAge(), pet.getOwnerId(), pet.getName(), pet.getRace(), pet.getId());
+
         return pet;
     }
+
+
 
     /**
      * Gives a specific pet by using its id
@@ -73,9 +77,10 @@ public class PetsDAO implements InterfacePetsDAO {
      * @param id
      * @return the pet with the given id
      */
+
     @Override
-    public Pets getPetById(int id) {
-        String sql = "SELECT * FROM pets WHERE ownerid = ?";
+    public Pets getPetByID(int id) {
+        String sql = "SELECT * FROM pets WHERE id = ? AND ownerId = ?";
         return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> new Pets(
                 rs.getInt("pet_id"),
                 rs.getInt("age"),
@@ -84,6 +89,19 @@ public class PetsDAO implements InterfacePetsDAO {
                 rs.getString("race")
         ), id);
     }
+    @Override
+    public Pets getPetByIds(int id,int ownerid) {
+        String sql = "SELECT * FROM pets WHERE pet_id = ? AND ownerId = ?";
+        return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> new Pets(
+                rs.getInt("pet_id"),
+                rs.getInt("age"),
+                rs.getInt("ownerid"),
+                rs.getString("name"),
+                rs.getString("race")
+        ), id,ownerid);
+    }
+
+
 
     /**
      * Gives a list of all pets in the database
