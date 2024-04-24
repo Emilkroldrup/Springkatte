@@ -29,7 +29,9 @@ public class UserService {
     public void updateUser(int id, User user){
         userDAO.editUserDetails(id, user);
     }
-
+    public  User getUserByEmail(String email){
+       return userDAO.getUserByEmail(email);
+    }
     public boolean loginCheck(User user){
         return  userDAO.logincheck(user);
     }

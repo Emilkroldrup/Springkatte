@@ -87,15 +87,14 @@ public class PetsController {
     }
 
     @PostMapping("/updatePet")
-    public String updatePet( @RequestParam("petId") int petId,
-                            @RequestParam("ownerid") int ownerid,
+    public String updatePet(Principal principal, @RequestParam("petId") int petId,
                             @RequestParam("petName") String petName,
                             @RequestParam("petAge") int petAge,
                             @RequestParam("petRace") String petRace) {
 
 
-
-        Pets updatedPet = new Pets(petId,petAge, ownerid, petName, petRace);
+        int ownerId = getCurrentUserId(principal);
+        Pets updatedPet = new Pets(petId,petAge, ownerId, petName, petRace);
         System.out.println("nej" + updatedPet);
 
         petsService.updatePet(updatedPet);

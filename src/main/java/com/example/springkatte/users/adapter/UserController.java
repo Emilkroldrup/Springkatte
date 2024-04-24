@@ -2,7 +2,6 @@ package com.example.springkatte.users.adapter;
 
 import com.example.springkatte.users.application.UserService;
 import com.example.springkatte.users.domain.User;
-import com.example.springkatte.users.domain.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,13 +20,12 @@ public class UserController {
     @Autowired
     private UserService userService;
    
-    @Autowired
-    private UserDAO userDAO;    
+
 
     // current user function :P
     private int getCurrentUserId(Principal principal) {
         String email = principal.getName();
-        User currentUser = userDAO.getUserByEmail(email);
+        User currentUser = userService.getUserByEmail(email);
         return currentUser.getId();
     }
 
@@ -57,22 +55,6 @@ public class UserController {
         return "homesite";
     }
 
-  /*  @PostMapping("/LoginUser")
-    public String LoginUser(@ModelAttribute User user, Model model) {
-        boolean loginSuccessful = userService.loginCheck(user);
-        id = UserDAO.id;
-        if (loginSuccessful) {
-            System.out.println("id" + id);
-            model.addAttribute("User", user);
-            return "HomeSite";
-
-        } else {
-            model.addAttribute("User", user);
-            return "LoginPage";
-        }
-    }
-
-   */
 
 
     @GetMapping("/UserCreation")

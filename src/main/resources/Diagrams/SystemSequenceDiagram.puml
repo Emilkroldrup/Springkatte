@@ -14,15 +14,15 @@ title CatHomeGUI
         Bruger -> System: Login pressed
         Bruger <-- System: Shows HomeSite
     else New User
-        Bruger -> System: Create Account
+        Bruger -> System: Register
         Bruger -> System: Type details
         Bruger <-- System: Account created
         Bruger <-- System: LoginScreen
 
     end
     note left of Bruger: HomeSite
-    alt Accountdetails
-    Bruger -> System: Account Details Pressed
+    alt MyAccount
+    Bruger -> System: MyAccount Pressed
     Bruger <-- System: Shows AccountDetailsSite
     Bruger <-- System: Shows name,email,password
     alt EditAccountDetails
@@ -31,14 +31,35 @@ title CatHomeGUI
     Bruger -> System: User changes Details
     Bruger -> System: User presses Confirm
     Bruger <-- System: Changes details
+
 end
+alt Pets
+    Bruger -> System: EditAccountDetails pressed
+    Bruger <-- System: Shows EditAccountSite
+    Bruger -> System: User changes Details
+    Bruger -> System: User presses Confirm
+    Bruger <-- System: Changes details
+
+    alt Editpets
+        Bruger -> System: Editpets pressed
+        Bruger <-- System: Shows EditPetSite
+        Bruger -> System: User changes Details
+        Bruger -> System: User presses Confirm
+        Bruger <-- System: Changes details
+        end
+
+    end
 end
 note left of Bruger: HomeSite
- alt DeleteAccount
-    Bruger -> System: DeleteAccount Pressed
-    Bruger <-- System: Shows DeleteAccountSite
-    Bruger -> System: User presses DeleteAccount
-    Bruger -> System: User presses Confirm
-    Bruger <-- System: Deletes accounts
+ alt Gallery
+    Bruger -> System: Gallery pressed
+    Bruger <-- System: Shows Gallery
+end
+
+note left of Bruger: HomeSite
+ alt Events
+    Bruger -> System: Events Pressed
+    Bruger <-- System: Shows Events
+
 end
 @enduml
