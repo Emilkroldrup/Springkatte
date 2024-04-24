@@ -121,6 +121,31 @@ h2 {
     text-align: center;
     margin-top: 20px;
 }
+
+.scroll-container {
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.scroll-container::-webkit-scrollbar {
+    width: 12px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.scroll-container::-webkit-scrollbar-button {
+    display: none;
+}
 form {
     background-color: #f8b971;
     padding: 20px;

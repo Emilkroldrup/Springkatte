@@ -54,7 +54,7 @@ public class UserController {
     @GetMapping("/HomeSite")
     public String ShowHomeSite(Model model) {
         model.addAttribute("User", new User());
-        return "HomeSite";
+        return "homesite";
     }
 
   /*  @PostMapping("/LoginUser")
