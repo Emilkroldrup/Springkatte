@@ -154,15 +154,6 @@ form {
     width: 300px;
 }
 
-.Error{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: bold;
-    font-size: 50px;
-}
-
 input[type="text"],
 input[type="password"],
 input[type="submit"],
@@ -202,4 +193,54 @@ input[type="submit"].delete-account {
     background-color: #FEE2AC;
 }
 
+.top-bar {
+    background-color: #412a11;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
 
+.small-picture {
+    width: 50px;
+    height: auto;
+}
+
+.dropbtn {
+    width: 40px;
+    height: auto;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    display: block;
+    font-weight: bold;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.errortext{
+    text-align: center;
+    font-size: 18px;
+    color: black;
+    font-weight: bold;
+    margin: 200px auto;
+    max-width: 400px;
+    padding: 20px;
+}
