@@ -102,8 +102,7 @@ public class PetsController {
         System.out.println("nej" + updatedPet);
 
         petsService.updatePet(updatedPet);
-
-        // Redirect to the userpets page
+        
         return "redirect:/userpets";
     }
 }

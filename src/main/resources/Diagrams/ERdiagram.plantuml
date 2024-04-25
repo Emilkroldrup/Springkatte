@@ -1,0 +1,26 @@
+@startuml
+!define Table(name,desc) class name as "desc" << (T,orchid) >>
+!define primary_key(x) <u>x</u>
+!define foreign_key(x) #x
+
+skinparam classAttributeIconSize 0
+
+Table(user, "User") {
+    primary_key(id) : int
+    name : varchar(255)
+    email : varchar(255)
+    password : varchar(255)
+    role : varchar(15)
+}
+
+Table(pets, "Pets") {
+    primary_key(pet_id) : int
+    foreign_key(ownerid) : int
+    age : int
+    name : varchar(255)
+    race : varchar(255)
+    image : longblob
+}
+
+user -- pets : ownerid
+@enduml
