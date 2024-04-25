@@ -15,23 +15,58 @@
     <a href="#events">Events</a>
 </div>
 
-<div class="jpeg-container">
-    <img src="../static/smolcat.jpg" alt="Smol Cat" class="smolcat">
+<div class="image-container">
+    <img src="../static/Cats for project/himalayankitten.jpg" class="image-container__image">
+    <div class="image-container__text">
+        <p>
+            Name: Snowflake<br>
+            Breed: Himalayan<br>
+            Age: 1<br>
+            Owner: Michael<br>
+        </p>
+    </div>
+    <img src="../static/Cats for project/americanbobtail.jpg" class="image-container__image">
+    <div class="image-container__text">
+        <p>
+            Name: Bob<br>
+            Breed: American Bobtail<br>
+            Age: 2<br>
+            Owner: Bobby<br>
+        </p>
+    </div>
+
+    <img src="../static/Cats for project/munchkin.jpg" class="image-container__image">
+    <div class="image-container__text">
+        <p>
+            Name: Bravo Jr.<br>
+            Breed: Munchkin<br>
+            Age: 1<br>
+            Owner: Johnny Bravo<br>
+        </p>
+    </div>
+
+    <img src="../static/Cats for project/burmese.jpg" class="image-container__image">
+    <div class="image-container__text">
+        <p>
+            Name: Banjo<br>
+            Breed: Burmese<br>
+            Age: 11<br>
+            Owner: Helen<br>
+        </p>
+    </div>
+
+    <img src="../static/Cats for project/cheetoh.jpg" class="image-container__image">
+    <div class="image-container__text">
+        <p>
+            Name: Cheetoh<br>
+            Breed: Cheetoh<br>
+            Age: 4<br>
+            Owner: Kevin<br>
+        </p>
+    </div>
 </div>
 
-<div class="scroll-container">
-
-</div>
-
-<form action="/EditAccount" method="post">
-    <label for="name">New name:</label><br>
-    <input type="text" id="name" name="name"><br>
-    <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
-    <input type="submit" value="Edit Account">
-</form>
-
-
-<h2>Find the right cat breed for you below</h2>
+<h2>Learn about different breeds below</h2>
     <a href="https://cats.com/cat-breeds">List of cat breeds</a>
 
 </body>

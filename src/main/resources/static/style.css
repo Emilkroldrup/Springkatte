@@ -117,9 +117,10 @@ h2 {
     margin-bottom: 20px;
 }
 
-.jpeg-container {
-    text-align: center;
+.image-container {
+    text-align: left;
     margin-top: 20px;
+
 }
 
 .scroll-container {
