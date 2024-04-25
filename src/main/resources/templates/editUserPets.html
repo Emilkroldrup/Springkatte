@@ -8,6 +8,19 @@
 </head>
 <body>
 <h2>Edit Pet</h2>
+<div class="top-bar">
+    <div class="dropdown">
+        <a><img src="../static/Dropdown.png" class="dropbtn"></a>
+        <div class="dropdown-content">
+            <a href="/HomeSite">Home Page</a>
+            <a href="AccountDetails">My Account</a>
+            <a href="#Gallery">Gallery</a>
+            <a href="#Events">Events</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+    <a href="/HomeSite"><img src="../static/CatLogo.png" alt="Small Picture" class="small-picture"></a>
+</div>
 <form th:action="@{/updatePet}" method="post">
     <input type="hidden" name="petId" th:value="${Pet.id}" />
     <p>Name: <input type="text" name="petName" th:value="${Pet.name}" /></p>

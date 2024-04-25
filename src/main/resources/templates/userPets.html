@@ -7,6 +7,19 @@
     <link rel="icon" href="../static/CatLogo.jpg" type="image/jpeg">
 </head>
 <body>
+<div class="top-bar">
+    <div class="dropdown">
+        <a><img src="../static/Dropdown.png" class="dropbtn"></a>
+        <div class="dropdown-content">
+            <a href="/HomeSite">Home Page</a>
+            <a href="AccountDetails">My Account</a>
+            <a href="#Gallery">Gallery</a>
+            <a href="#Events">Events</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+    <a href="/HomeSite"><img src="../static/CatLogo.png" alt="Small Picture" class="small-picture"></a>
+</div>
 <form th:action="@{/userPets}" th:object="${Pets}"  class="pets" method="post">
     <div style="text-align: center;">
         <label style="font-size: 25px; font-weight: bold;" >Your Pets</label>
