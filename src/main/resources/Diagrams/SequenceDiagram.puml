@@ -1,0 +1,19 @@
+@startuml
+!theme plain
+
+actor User
+participant "UI Controller" as UI
+participant "CatService" as Service
+participant "CatDAO" as DAO
+participant "Database" as DB
+
+User -> UI : createPet(details)
+UI -> Service : createNewPet(details)
+Service -> DAO : addPet(pet)
+DAO -> DB : insert(pet)
+DB -> DAO : confirmation
+DAO -> Service : petCreated
+Service -> UI : petSuccess
+UI -> User : displayConfirmation
+
+@enduml

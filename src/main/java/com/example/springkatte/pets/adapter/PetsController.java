@@ -32,7 +32,6 @@ public class PetsController {
 
     @ExceptionHandler(RuntimeException.class)
     public String handleRuntimeException(RuntimeException e, Model model) {
-        // Add the error message to the model
         model.addAttribute("errorMessage", e.getMessage());
         return "error";
     }
