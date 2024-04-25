@@ -3,8 +3,8 @@
 
 actor User
 participant "UI Controller" as UI
-participant "CatService" as Service
-participant "CatDAO" as DAO
+participant "PetsService" as Service
+participant "PetsDAO" as DAO
 participant "Database" as DB
 
 User -> UI : createPet(details)
