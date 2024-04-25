@@ -17,21 +17,27 @@ public class UserService {
     public User addUser(User user) {
         return userDAO.addUser(user);
     }
+
     public void removeUser(int id){
         userDAO.removeUser(id);
     }
+
     public User getUser(int id){
         return userDAO.getUserById(id);
     }
+
     public List<User> getAllUser(){
         return userDAO.getAllUsers();
     }
+
     public void updateUser(int id, User user){
         userDAO.editUserDetails(id, user);
     }
+
     public  User getUserByEmail(String email){
        return userDAO.getUserByEmail(email);
     }
+    
     public boolean loginCheck(User user){
         return  userDAO.logincheck(user);
     }

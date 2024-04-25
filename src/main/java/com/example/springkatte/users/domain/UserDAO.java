@@ -124,6 +124,12 @@ public class UserDAO implements InterfaceUserDAO {
 
     }
 
+    /**
+     * Gives a specific user by using its email
+     *
+     * @param email
+     * @return the user with the given email
+     */
     @Override
     public User getUserByEmail(String email) {
         try{
@@ -138,10 +144,7 @@ public class UserDAO implements InterfaceUserDAO {
         } catch(Exception e){
             throw new RuntimeException("Failed to get user by Email" + e.getMessage());
         }
-
-
     }
-
 
     /**
      * Updates a user in the database

@@ -81,8 +81,6 @@ public class PetsDAO implements InterfacePetsDAO {
         }
     }
 
-
-
     /**
      * Gives a specific pet by using its id
      *
@@ -105,6 +103,14 @@ public class PetsDAO implements InterfacePetsDAO {
             throw new RuntimeException("Error getting pet with id: " + id + " " + e.getMessage());
         }
     }
+
+    /**
+     * Gives a specific pet by using its id and owner id
+     *
+     * @param id
+     * @param ownerid
+     * @return the pet with the given id and owner id
+     */
     @Override
     public Pets getPetByIds(int id,int ownerid) {
         try{
@@ -120,8 +126,6 @@ public class PetsDAO implements InterfacePetsDAO {
             throw new RuntimeException("Error getting pet with id: " + id + " " + e.getMessage());
         }
     }
-
-
 
     /**
      * Gives a list of all pets in the database
@@ -143,6 +147,13 @@ public class PetsDAO implements InterfacePetsDAO {
             throw new RuntimeException("Error getting pets " + e.getMessage());
         }
     }
+
+    /**
+     * Gives a list of all pets by using the owner id
+     *
+     * @param ownerid
+     * @return a list of all pets with the given owner id
+     */
     @Override
     public List<Pets> getallPetsbyOwnerid(int ownerid) {
         try{

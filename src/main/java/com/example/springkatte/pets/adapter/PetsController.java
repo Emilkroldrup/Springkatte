@@ -21,10 +21,12 @@ public class PetsController {
     private UserService userService;
 
     @Autowired
+    private PetsService petsService;
+    
+    @Autowired
     private UserDAO userDAO;
 
-    @Autowired
-    private PetsService petsService;
+    
 
     private int cuerrentpetindex = 0;
 

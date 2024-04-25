@@ -24,13 +24,11 @@ public class UserController {
         return "error";
     }
 
-    // current user function :P
     private int getCurrentUserId(Principal principal) {
         String email = principal.getName();
         User currentUser = userService.getUserByEmail(email);
         return currentUser.getId();
     }
-
 
     @GetMapping("/")
     public String defaultRedirect(@RequestParam(required = false) String continueParam) {
@@ -57,8 +55,6 @@ public class UserController {
         return "homesite";
     }
 
-
-
     @GetMapping("/UserCreation")
     public String Usercreation(Model model){
         model.addAttribute("User", new User());
@@ -71,7 +67,6 @@ public class UserController {
         model.addAttribute("User", user);
         return "LoginPage";
     }
-
 
     @GetMapping("/UserDelete")
     public String UserDelete(Model model){
@@ -114,7 +109,4 @@ public class UserController {
         userService.updateUser(id, user);
         return "redirect:HomeSite";
     }
-
-
-
 }

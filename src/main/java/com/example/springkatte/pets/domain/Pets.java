@@ -18,12 +18,14 @@ public class Pets {
         this.name = name;
         this.race = race;
     }
+
     public Pets( int age, int ownerId, String name, String race) {
         this.age = age;
         this.ownerId = ownerId;
         this.name = name;
         this.race = race;
     }
+
     public Pets( int age, String name, String race) {
         this.age = age;
         this.name = name;
@@ -36,6 +38,7 @@ public class Pets {
 
         this.race = race;
     }
+    
     public int getId() {
         return id;
     }

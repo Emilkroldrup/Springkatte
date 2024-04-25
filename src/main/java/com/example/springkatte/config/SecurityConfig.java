@@ -21,14 +21,11 @@ import java.util.List;
 @EnableWebSecurity
 public class SecurityConfig {
 
-
-
     private final UserDAO userDAO;
 
     public SecurityConfig(UserDAO userDAO) {
         this.userDAO = userDAO;
     }
-
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -91,6 +88,7 @@ public class SecurityConfig {
 
         return new InMemoryUserDetailsManager(userdetailslist);
     }
+    
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
