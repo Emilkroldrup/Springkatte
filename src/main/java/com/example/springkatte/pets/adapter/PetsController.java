@@ -2,12 +2,14 @@ package com.example.springkatte.pets.adapter;
 
 import com.example.springkatte.pets.application.PetsService;
 import com.example.springkatte.pets.domain.Pets;
+import com.example.springkatte.pets.domain.PetsDAO;
 import com.example.springkatte.users.application.UserService;
 import com.example.springkatte.users.domain.User;
 import com.example.springkatte.users.domain.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -25,6 +27,9 @@ public class PetsController {
     
     @Autowired
     private UserDAO userDAO;
+
+    @Autowired
+    private PetsDAO petsDAO;
 
     
 
@@ -104,5 +109,16 @@ public class PetsController {
         petsService.updatePet(updatedPet);
         
         return "redirect:/userpets";
+    }
+
+    @PostMapping("/addPet")
+    public String addPet(Principal principal, 
+                        @RequestParam("petName") String petName,
+                        @RequestParam("petAge") int petAge,
+                        @RequestParam("petRace") String petRace) {
+        int ownerId = getCurrentUserId(principal);
+        Pets newPet = new Pets(ownerId, petAge, petName, petRace);
+        petsService.addPet(newPet);
+        return "homesite";
     }
 }

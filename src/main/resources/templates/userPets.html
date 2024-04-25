@@ -40,13 +40,21 @@
 
 </form>
 
-<form th:action="@{/nextPet}"  class="nextpet " method="post">
-    <button type="submit" >Next</button>
+<form action="/addPet" class="addpet" method="post">
+    <input type="hidden" name="ownerId" value="${user.id}">
+    <input type="text" name="petName" placeholder="Pet Name">
+    <input type="text" name="petRace" placeholder="Pet Race">
+    <input type="number" name="petAge" placeholder="Pet Age">
+    <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+    <button type="submit">Add Pet</button>
 </form>
 
 
+<form th:action="@{/nextPet}"  class="nextpet" method="post">
+    <button type="submit" >Next</button>
+</form>
 
-<form th:action="@{/prevPet}" class="prevpet " method="post">
+<form th:action="@{/prevPet}" class="prevpet" method="post">
     <button type="submit">Previous</button>
 </form>
 
