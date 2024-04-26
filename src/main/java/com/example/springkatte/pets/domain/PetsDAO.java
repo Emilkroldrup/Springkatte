@@ -26,8 +26,8 @@ public class PetsDAO implements InterfacePetsDAO {
     @Override
     public Pets addPet(Pets pet) {
         try{
-            String sql = "INSERT INTO pets (ownerId,age,name,race) VALUES (?,?,?,?)";
-            jdbcTemplate.update(sql, pet.getAge(), pet.getOwnerId(), pet.getName(), pet.getRace());
+            String sql = "INSERT INTO pets (ownerId,age,name,race,image) VALUES (?,?,?,?,?)";
+            jdbcTemplate.update(sql, pet.getAge(), pet.getOwnerId(), pet.getName(), pet.getRace(), "https://www.google.com");
             return pet;
         } catch (Exception e) {
             throw new RuntimeException("Error adding pet" + e.getMessage());
