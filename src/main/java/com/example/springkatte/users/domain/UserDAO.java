@@ -5,6 +5,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
+/**
+ * This class is marked as a @Service, meaning it's a candidate for Spring's component scanning to detect and add to the application context.
+ * It uses JdbcTemplate to interact with the database.
+ */
 @Service
 public class UserDAO implements InterfaceUserDAO {
 
